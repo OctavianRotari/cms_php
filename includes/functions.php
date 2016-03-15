@@ -1,11 +1,14 @@
 <?php include "db.php"?>
 <?php
-function readFromDb($table){
+function readFromDb($table, $queryExtention = NULL){
 	global $connection;
 	$query = "SELECT * FROM $table";
+	if($queryExtention){
+		$query = $query . $queryExtention;
+	}
 	$result = mysqli_query($connection, $query);
 	if(!$result){
-		die("can't get data from db" . mysqli_error($connection));
+		die("can't get data from db" . $query . mysqli_error($connection));
 	}
 	return $result;
 }
@@ -13,29 +16,43 @@ function readFromDb($table){
 function displayCategories($table){
 	$result = readFromDb($table);
 	while( $row = mysqli_fetch_assoc($result)){
-	?>
-		<li><a href="#"><?php echo $row["cat_title"]?></a></li>
-	<?php
+		$cat_title = $row["cat_title"];
+		echo "<li><a href='#'>{$cat_title}</a></li>";
 	}
 }
 
 function displayPosts($table){
-	$result = readFromDb($table);
+	if(blogSearch()){
+		$result = blogSearch();
+	} else {
+		$result = readFromDb($table);
+	}
 	while($row = mysqli_fetch_assoc($result)){
-		?>
-		<h2>
-		<a href="#"><?php echo $row["post_title"]?></a>
+		$post_title = $row["post_title"];
+		$post_author = $row["post_author"];
+		$post_date = $row['post_date'];
+		$post_image = $row['post_image'];
+		$post_content = $row['post_content'];
+		echo
+		"<h2>
+		<a href='#'>{$post_title}</a>
 		</h2>
-		<p class="lead">
-		by <a href="index.php"><?php echo $row["post_author"]?></a>
+		<p class='lead'>
+		by <a href='index.php'>{$post_author}</a>
 		</p>
-		<p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $row["post_date"]?></p>
+		<p><span class='glyphicon glyphicon-time'></span> Posted on {$post_date} </p>
 		<hr>
-		<img class="img-responsive" src="<?php echo $row['post_image']?>" alt="" height="300px" width="300px">
+		<img class='img-responsive' src='{$post_image}' alt='' height='300px' width='300px'>
 		<hr>
-		<p>"<?php echo $row['post_content']?>"</p>
-		<a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-		<?php
+		<p>{$post_content}</p>
+		<a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>
+		<hr>";
+	}
+}
+function blogSearch(){
+	if(isset($_POST['submit'])){
+		$search = $_POST['search'];
+		return readFromDb("posts", " WHERE post_tags LIKE '%$search%'");
 	}
 }
 ?>
