@@ -34,6 +34,6 @@
 				</li>
 			</ul>
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<?php include "sidebar.php"?>
+			<?php include "admin_sidebar.php"?>
 			<!-- /.navbar-collapse -->
 		</nav>
