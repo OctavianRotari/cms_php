@@ -18,22 +18,22 @@
 						</li>
 					</ol>
 					<div class="col-xs-6">
-						<?php 
-						insertingCategoriesIntoDb();
-						?>
+						<?php insertingCategoriesIntoDb();?>
 						<form action="categories.php" method="post">
 							<div class="form-group">
 								<label for="cat_title">Add Category</label>
 								<input type="text" class="form-control" name="cat_title">
 							</div>
 							<div class="form-group">
-								<input type="submit" name="submit" class="btn btn-primary">
+								<input type="submit" value="Add new" name="submit" class="btn btn-primary">
 							</div>
 						</form>
+						<?php htmlFormUpdateCategory()?>
+						<?php updateCategoryInDb() ?>
 					</div>
 					<div class="col-xs-6">
 					<table class="table table-bordered table-hover">
-						<?php deleteCategoriesFromDb();?>
+						<?php deleteCategoryFromDb();?>
 						<thead>
 							<tr>
 								<th>Id</th>
