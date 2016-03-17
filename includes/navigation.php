@@ -1,4 +1,5 @@
 <?php include "functions.php"?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -14,7 +15,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<?php displayCategories("categories");?>
+				<?php displayCategories();?>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

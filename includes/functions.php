@@ -13,19 +13,19 @@ function readFromDb($table, $queryExtention = NULL){
 	return $result;
 }
 
-function displayCategories($table){
-	$result = readFromDb($table);
+function displayCategories($query = NULL){
+	$result = readFromDb("categories", $query);
 	while( $row = mysqli_fetch_assoc($result)){
 		$cat_title = $row["cat_title"];
 		echo "<li><a href='#'>{$cat_title}</a></li>";
 	}
 }
 
-function displayPosts($table){
+function displayPosts(){
 	if(blogSearch()){
 		$result = blogSearch();
 	} else {
-		$result = readFromDb($table);
+		$result = readFromDb("posts");
 	}
 	while($row = mysqli_fetch_assoc($result)){
 		$post_title = $row["post_title"];

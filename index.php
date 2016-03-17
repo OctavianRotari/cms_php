@@ -13,7 +13,7 @@
 					<small>Secondary Text</small>
 				</h1>
 				<!-- First Blog Post -->
-				<?php displayPosts("posts")?>
+				<?php displayPosts()?>
 			</div>
 			<!-- Blog Sidebar Widgets Column -->
 			<?php include "includes/sidebar.php"?>
