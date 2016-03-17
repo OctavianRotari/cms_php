@@ -29,8 +29,25 @@ function displayCategoriesInTable(){
 		echo "<tr>";
 		echo "<td>{$cat_id}</td>";
 		echo "<td>{$cat_title}</td>";
+		echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
 		echo "<tr>";
 	}
+}
+
+function deleteCategoriesFromDb(){
+	global $connection;
+	if(isset($_GET['delete'])){
+		$cat_id = $_GET['delete'];
+		$query = "DELETE FROM categories ";
+		$query .= "WHERE cat_id=$cat_id";
+		$delete_category = mysqli_query($connection, $query);
+		echo "category deleted";
+		header("Location: categories.php");
+		if(!$delete_category){
+			die('Cant delete because ' . mysqli_error($connection));
+		}
+	}
+
 }
 
 function insertingCategoriesIntoDb(){

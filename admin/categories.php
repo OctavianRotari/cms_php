@@ -33,6 +33,7 @@
 					</div>
 					<div class="col-xs-6">
 					<table class="table table-bordered table-hover">
+						<?php deleteCategoriesFromDb();?>
 						<thead>
 							<tr>
 								<th>Id</th>
@@ -40,9 +41,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-								displayCategoriesInTable();
-							?>
+							<?php displayCategoriesInTable();?>
 						</tbody>
 					</table>
 					</div>
