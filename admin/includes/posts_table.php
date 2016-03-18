@@ -1,5 +1,6 @@
 <div>
 	<table class="table table-bordered table-hover">
+		<?php deletePost();?>
 		<thead>
 			<tr>
 				<th>Post Id</th>

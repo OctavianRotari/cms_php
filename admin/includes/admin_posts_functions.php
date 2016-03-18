@@ -22,6 +22,9 @@ function displayPostsInTable(){
 		echo "<td>{$post_tags}</td>";
 		echo "<td>Comments</td>";
 		echo "<td>{$post_date}</td>";
+		echo "<td><a href=''>Edit</a></td>";
+		echo "<td><a href=''>Show</a></td>";
+		echo "<td><a href='posts.php?delete_post={$post_id}'>Delete</a></td>";
 		echo "<tr>";
 	}
 }
@@ -38,12 +41,31 @@ function addNewPost(){
 		$post_content = $_POST['post_content'];
 		$post_date = date('Y-m-d H:i:s');
 		$post_status = "draft";
-		$query ="INSERT INTO posts(post_title, post_category_id, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status)";
-		$query .= "VALUE('$post_title', '$post_category_id', '$post_author', '$post_date', '$post_image', '$post_content', '$post_tags', '$post_comment_count', '$post_status')";
+		$query ="INSERT INTO posts(post_title, ";
+		$query .= "post_category_id, post_author, post_date, post_image, ";
+		$query .= "post_content, post_tags, post_comment_count, post_status)";
+		$query .= "VALUE('$post_title', '$post_category_id', ";
+		$query .= "'$post_author', '$post_date', '$post_image', ";
+		$query .= "'$post_content', '$post_tags', '$post_comment_count', '$post_status')";
 		$result = mysqli_query($connection, $query);
 		header("Location: posts.php");
 		if(!$result){
 			die('Cant post post because ' . mysqli_error($connection));
+		}
+	}
+}
+
+function deletePost(){
+	global $connection;
+	if(isset($_GET['delete_post'])){
+		$post_id = $_GET['delete_post'];
+		$query = "DELETE FROM posts ";
+		$query .= "WHERE post_id=$post_id";
+		$delete_category = mysqli_query($connection, $query);
+		echo "post deleted";
+		header("Location: posts.php");
+		if(!$delete_category){
+			die('Cant delete because ' . mysqli_error($connection));
 		}
 	}
 }
@@ -58,7 +80,6 @@ function displayContentPostsPage(){
 		case 'add_post';
 		include "includes/posts_form.php";
 		break;
-
 		default:
 		include "includes/posts_table.php";
 		break;
