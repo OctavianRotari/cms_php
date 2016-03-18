@@ -1,5 +1,4 @@
 <?php ob_start();?>
-<?php include "includes/admin_functions.php"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

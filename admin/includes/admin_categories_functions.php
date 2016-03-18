@@ -32,7 +32,7 @@ function deleteCategoryFromDb(){
 
 }
 
-function findCategoryNameInDb(){
+function findCategoryInDb(){
 	global $connection;
 	if(isset($_GET['update'])){
 		$cat_id = $_GET['update'];
@@ -48,7 +48,7 @@ function htmlFormUpdateCategory(){
 		echo "<form action='categories.php' method='post'>
 			<div class='form-group'>
 				<label for='cat_title'>Update Category with Id: </label>";
-				$row = findCategoryNameInDb();
+				$row = findCategoryInDb();
 				$cat_id = $row['cat_id'];
 				$cat_title = $row['cat_title'];
 		echo   "<input class='control-label' style='border:none' readonly value='{$cat_id}' name='cat_id'>

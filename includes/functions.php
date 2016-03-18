@@ -2,7 +2,6 @@
 <?php include "read_from_db_function.php"?>
 <?php
 
-
 function displayCategories($query = NULL){
 	$result = readFromDb("categories", $query);
 	while( $row = mysqli_fetch_assoc($result)){
