@@ -23,7 +23,7 @@ function displayPostsInTable(){
 		echo "<td>Comments</td>";
 		echo "<td>{$post_date}</td>";
 		echo "<td><a href=''>Edit</a></td>";
-		echo "<td><a href=''>Show</a></td>";
+		echo "<td><a href='posts.php?source=show_post&id={$post_id}'>Show</a></td>";
 		echo "<td><a href='posts.php?delete_post={$post_id}'>Delete</a></td>";
 		echo "<tr>";
 	}
@@ -55,6 +55,15 @@ function addNewPost(){
 	}
 }
 
+function findPostInDb(){
+	global $connection;
+	$post_id = $_GET['id'];
+	$result = readFromDb("posts", " WHERE post_id={$post_id}");
+	while($row = mysqli_fetch_assoc($result)){
+		return $row;
+	}
+}
+
 function deletePost(){
 	global $connection;
 	if(isset($_GET['delete_post'])){
@@ -80,10 +89,12 @@ function displayContentPostsPage(){
 		case 'add_post';
 		include "includes/posts_form.php";
 		break;
+		case 'show_post';
+		include "includes/post_show.php";
+		break;
 		default:
 		include "includes/posts_table.php";
 		break;
 	}
 }
-
 ?>
