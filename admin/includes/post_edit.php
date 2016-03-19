@@ -1,7 +1,7 @@
 <?php $row = findRowInDb("posts", "id", "post");?>
 <?php updatePostInDb();?>
 <div class="col-sm-6">
-	<form action="posts.php?source=edit_post&id=<?php echo $_GET['id']?>" method="post">
+	<form action="posts.php?source=edit_post&id=<?php echo $_GET['id']?>" method="post" enctype="multipart/form-data">
 		<div class=form-group>
 			<label for="post_title">Title</label>
 			<input class="form-control" value="<?php echo $row['post_title']?>" type="text" name="post_title">
@@ -11,8 +11,10 @@
 			<input class="form-control" value="<?php echo $row['post_author']?>" type="text" name="post_author">
 		</div>
 		<div class=form-group>
+			<label for="current_image">Current Image</label><br>
+			<img name="current_image" src="../images/<?php echo $row['post_image']?>" width="300px" height="300px"><br>
 			<label for="post_image">Image url</label>
-			<input class="form-control"  value="<?php echo $row['post_image']?>" type="text" name="post_image">
+			<input type="file" name="post_image">
 		</div>
 		<div class=form-group>
 			<label for="post_tags">Tags</label>

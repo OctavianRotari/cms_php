@@ -1,6 +1,6 @@
 <div class="col-sm-6">
 <?php addNewPost();?>
-	<form action="posts.php?source=add_post" method="post">
+	<form action="posts.php?source=add_post" method="post" enctype="multipart/form-data">
 		<div class=form-group>
 			<label for="post_title">Title</label>
 			<input class="form-control" type="text" name="post_title">
@@ -10,8 +10,8 @@
 			<input class="form-control" type="text" name="post_author">
 		</div>
 		<div class=form-group>
-			<label for="post_image">Image url</label>
-			<input class="form-control" type="text" name="post_image">
+			<label for="post_image">Image</label>
+			<input type="file" name="post_image">
 		</div>
 		<div class=form-group>
 			<label for="post_tags">Tags</label>

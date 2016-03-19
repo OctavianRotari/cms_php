@@ -8,12 +8,14 @@ function addNewPost(){
 		$post_title  = $_POST['post_title'];
 		$post_category_id  = '23';
 		$post_author = $_POST['post_author'];
-		$post_image  = $_POST['post_image'];
+		$post_image  = $_FILES['post_image']['name'];
+		$post_image_temp  = $_FILES['post_image']['tmp_name'];
 		$post_tags  = $_POST['post_tags'];
 		$post_comment_count  = '23';
 		$post_content = $_POST['post_content'];
 		$post_date = date('Y-m-d H:i:s');
 		$post_status = "draft";
+		move_uploaded_file($post_image_temp, "../images/$post_image");
 		$query ="INSERT INTO posts(post_title, ";
 		$query .= "post_category_id, post_author, post_date, post_image, ";
 		$query .= "post_content, post_tags, post_comment_count, post_status)";
@@ -21,13 +23,11 @@ function addNewPost(){
 		$query .= "'$post_author', '$post_date', '$post_image', ";
 		$query .= "'$post_content', '$post_tags', '$post_comment_count', '$post_status')";
 		$result = mysqli_query($connection, $query);
-		header("Location: posts.php");
 		if(!$result){
 			die('Cant post post because ' . mysqli_error($connection));
 		}
 	}
 }
-
 
 function updatePostInDb(){
 	global $connection;
@@ -35,9 +35,11 @@ function updatePostInDb(){
 		$post_id = $_GET['id'];
 		$post_title = $_POST['post_title'];
 		$post_author = $_POST['post_author'];
-		$post_image = $_POST['post_image'];
+		$post_image  = $_FILES['post_image']['name'];
+		$post_image_temp  = $_FILES['post_image']['tmp_name'];
 		$post_tags = $_POST['post_tags'];
 		$post_content = $_POST['post_content'];
+		move_uploaded_file($post_image_temp, "../images/$post_image");
 		$query = "UPDATE posts SET";
 		$query .= " post_title='{$post_title}',";
 		$query .= " post_author='{$post_author}',";

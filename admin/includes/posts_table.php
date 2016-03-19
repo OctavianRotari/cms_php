@@ -25,7 +25,7 @@
 				<td><?php echo $row['post_title'];?></td>
 				<td>Category</td>
 				<td><?php echo $row['post_status'];?></td>
-				<td><img src='<?php echo $row['post_image'];?>' width='100px'height='100px'></td>
+				<td><img src='../images/<?php echo $row['post_image'];?>' width='100px'height='100px'></td>
 				<td><?php echo $row['post_tags'];?></td>
 				<td>Comments</td>
 				<td><?php echo $row['post_date'];?></td>
