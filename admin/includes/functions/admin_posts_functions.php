@@ -15,16 +15,27 @@ function addNewPost(){
 		$post_content = $_POST['post_content'];
 		$post_date = date('Y-m-d H:i:s');
 		$post_status = "draft";
-		move_uploaded_file($post_image_temp, "../images/$post_image");
-		$query ="INSERT INTO posts(post_title, ";
-		$query .= "post_category_id, post_author, post_date, post_image, ";
-		$query .= "post_content, post_tags, post_comment_count, post_status)";
-		$query .= "VALUE('$post_title', '$post_category_id', ";
-		$query .= "'$post_author', '$post_date', '$post_image', ";
-		$query .= "'$post_content', '$post_tags', '$post_comment_count', '$post_status')";
-		$result = mysqli_query($connection, $query);
-		if(!$result){
-			die('Cant post post because ' . mysqli_error($connection));
+		$submitedForm = $_POST;
+		$emptyValues = 0;
+		foreach( $submitedForm  as $key => $value){
+			if(empty($value)){
+				$emptyValues += 1;
+			}
+		}
+		if ($emptyValues === 0 ){
+			move_uploaded_file($post_image_temp, "../images/$post_image");
+			$query ="INSERT INTO posts(post_title, ";
+			$query .= "post_category_id, post_author, post_date, post_image, ";
+			$query .= "post_content, post_tags, post_comment_count, post_status)";
+			$query .= "VALUE('$post_title', '$post_category_id', ";
+			$query .= "'$post_author', now(), '$post_image', ";
+			$query .= "'$post_content', '$post_tags', '$post_comment_count', '$post_status')";
+			$result = mysqli_query($connection, $query);
+			if(!$result){
+				die('Cant post post because ' . mysqli_error($connection));
+			}
+		} else {
+			echo 'Fill in  all the fields';
 		}
 	}
 }
@@ -39,18 +50,29 @@ function updatePostInDb(){
 		$post_image_temp  = $_FILES['post_image']['tmp_name'];
 		$post_tags = $_POST['post_tags'];
 		$post_content = $_POST['post_content'];
-		move_uploaded_file($post_image_temp, "../images/$post_image");
-		$query = "UPDATE posts SET";
-		$query .= " post_title='{$post_title}',";
-		$query .= " post_author='{$post_author}',";
-		$query .= " post_image='{$post_image}',";
-		$query .= " post_tags='{$post_tags}',";
-		$query .= " post_content='{$post_content}'";
-		$query .= " WHERE post_id='{$post_id}'";
-		$updating = mysqli_query($connection, $query);
-		header("Location: posts.php");
-		if(!$updating){
-			die(" cant update because " . mysqli_error($connection));
+		$submitedForm = $_POST;
+		$emptyValues = 0;
+		foreach( $submitedForm  as $key => $value){
+			if(empty($value)){
+				$emptyValues += 1;
+			}
+		}
+		if ($emptyValues === 0 ){
+			move_uploaded_file($post_image_temp, "../images/$post_image");
+			$query = "UPDATE posts SET";
+			$query .= " post_title='{$post_title}',";
+			$query .= " post_author='{$post_author}',";
+			$query .= " post_image='{$post_image}',";
+			$query .= " post_tags='{$post_tags}',";
+			$query .= " post_content='{$post_content}'";
+			$query .= " WHERE post_id='{$post_id}'";
+			$updating = mysqli_query($connection, $query);
+			header("Location: posts.php");
+			if(!$updating){
+				die(" cant update because " . mysqli_error($connection));
+			}
+		} else {
+			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
 		}
 	}
 }
@@ -71,9 +93,14 @@ function displayContentPostsPage(){
 		case 'edit_post';
 		include "includes/post_edit.php";
 		break;
-		default:
+	default:
 		include "includes/posts_table.php";
 		break;
 	}
 }
+
+function queryForUpdate(){
+
+}
+
 ?>
