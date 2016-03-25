@@ -6,6 +6,21 @@
 			<input class="form-control" type="text" name="post_title">
 		</div>
 		<div class=form-group>
+			<label for="post_category_id">Category</label>
+			<select name="post_category_id">
+				<?php
+					$result = readFromDb("categories");
+					while( $row = mysqli_fetch_assoc($result)){
+						$cat_id = $row['cat_id'];
+						$cat_title = $row['cat_title'];
+						?>
+						<option value='<?php echo $cat_id?>'><?php echo $cat_title?></option>
+						<?php
+					}
+				?>
+			</select>
+		</div>
+		<div class=form-group>
 			<label for="post_author">Author</label>
 			<input class="form-control" type="text" name="post_author">
 		</div>

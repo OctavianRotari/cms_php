@@ -1,6 +1,5 @@
 <div>
 	<table class="table table-bordered table-hover">
-		<?php deleteRowFromDb("posts", "delete_post", "post");?>
 		<thead>
 			<tr>
 				<th>Post Id</th>
@@ -16,6 +15,7 @@
 		</thead>
 		<tbody>
 			<?php 
+			deleteRowFromDb("posts", "delete_post", "post");
 			$result = readFromdb("posts");
 			while( $row = mysqli_fetch_assoc($result)){
 				?>
@@ -23,7 +23,10 @@
 				<td><?php echo $row['post_id'];?></td>
 				<td><?php echo $row['post_author'];?></td>
 				<td><?php echo $row['post_title'];?></td>
-				<td>Category</td>
+				<td><?php
+					$category_row = getCategoryTitleUsingCatId($row);
+					echo $category_row['cat_title'];
+				?></td>
 				<td><?php echo $row['post_status'];?></td>
 				<td><img src='../images/<?php echo $row['post_image'];?>' width='100px'height='100px'></td>
 				<td><?php echo $row['post_tags'];?></td>

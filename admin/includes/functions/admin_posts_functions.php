@@ -6,7 +6,7 @@ function addNewPost(){
 	global $connection;
 	if(isset($_POST['add_new_post'])){
 		$post_title  = $_POST['post_title'];
-		$post_category_id  = '23';
+		$post_category_id  = $_POST['post_category_id'];
 		$post_author = $_POST['post_author'];
 		$post_image  = $_FILES['post_image']['name'];
 		$post_image_temp  = $_FILES['post_image']['tmp_name'];
@@ -15,14 +15,15 @@ function addNewPost(){
 		$post_content = $_POST['post_content'];
 		$post_date = date('Y-m-d H:i:s');
 		$post_status = "draft";
-		$submitedForm = $_POST;
-		$emptyValues = 0;
-		foreach( $submitedForm  as $key => $value){
+		$submited_form = $_POST;
+		$empty_values = 0;
+		foreach( $submited_form  as $key => $value){
 			if(empty($value)){
-				$emptyValues += 1;
+				$empty_values += 1;
 			}
 		}
-		if ($emptyValues === 0 ){
+		print_r($_POST);
+		if ($empty_values === 0 ){
 			move_uploaded_file($post_image_temp, "../images/$post_image");
 			$query ="INSERT INTO posts(post_title, ";
 			$query .= "post_category_id, post_author, post_date, post_image, ";
@@ -30,12 +31,11 @@ function addNewPost(){
 			$query .= "VALUE('$post_title', '$post_category_id', ";
 			$query .= "'$post_author', now(), '$post_image', ";
 			$query .= "'$post_content', '$post_tags', '$post_comment_count', '$post_status')";
-			$result = mysqli_query($connection, $query);
-			if(!$result){
-				die('Cant post post because ' . mysqli_error($connection));
-			}
+			$adding_new_post = mysqli_query($connection, $query);
+			ifQueryFail($adding_new_post);
+			header("Location: posts.php");
 		} else {
-			echo 'Fill in  all the fields';
+			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
 		}
 	}
 }
@@ -46,35 +46,46 @@ function updatePostInDb(){
 		$post_id = $_GET['id'];
 		$post_title = $_POST['post_title'];
 		$post_author = $_POST['post_author'];
+		$post_category_id  = $_POST['post_category_id'];
 		$post_image  = $_FILES['post_image']['name'];
 		$post_image_temp  = $_FILES['post_image']['tmp_name'];
 		$post_tags = $_POST['post_tags'];
 		$post_content = $_POST['post_content'];
-		$submitedForm = $_POST;
-		$emptyValues = 0;
-		foreach( $submitedForm  as $key => $value){
+		$post_status = $_POST['post_status'];
+		$submited_form = $_POST;
+		$empty_values = 0;
+		foreach( $submited_form  as $key => $value){
 			if(empty($value)){
-				$emptyValues += 1;
+				$empty_values += 1;
 			}
 		}
-		if ($emptyValues === 0 ){
+		if ($empty_values === 0 ){
 			move_uploaded_file($post_image_temp, "../images/$post_image");
 			$query = "UPDATE posts SET";
 			$query .= " post_title='{$post_title}',";
 			$query .= " post_author='{$post_author}',";
-			$query .= " post_image='{$post_image}',";
-			$query .= " post_tags='{$post_tags}',";
-			$query .= " post_content='{$post_content}'";
-			$query .= " WHERE post_id='{$post_id}'";
-			$updating = mysqli_query($connection, $query);
-			header("Location: posts.php");
-			if(!$updating){
-				die(" cant update because " . mysqli_error($connection));
+			if($_FILES['post_image']['size'] > 0){
+				$query .= " post_image='{$post_image}',";
 			}
+			$query .= " post_tags='{$post_tags}',";
+			$query .= " post_content='{$post_content}',";
+			$query .= " post_status='{$post_status}',";
+			$query .= " post_category_id='{$post_category_id}'";
+			$query .= " WHERE post_id='{$post_id}'";
+			$updating_post = mysqli_query($connection, $query);
+			ifQueryFail($updating_post);
+			header("Location: posts.php");
 		} else {
 			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
 		}
 	}
+}
+
+function getCategoryTitleUsingCatId($row){
+	$category_id = $row['post_category_id'];
+	$category_query = readFromDb('categories', " WHERE cat_id={$category_id}");
+	$category_row = mysqli_fetch_assoc($category_query);
+	return $category_row;
 }
 
 function displayContentPostsPage(){
@@ -85,7 +96,7 @@ function displayContentPostsPage(){
 	}
 	switch($source){
 		case 'add_post';
-		include "includes/posts_form.php";
+		include "includes/posts_new.php";
 		break;
 		case 'show_post';
 		include "includes/post_show.php";
@@ -97,10 +108,6 @@ function displayContentPostsPage(){
 		include "includes/posts_table.php";
 		break;
 	}
-}
-
-function queryForUpdate(){
-
 }
 
 ?>

@@ -6,9 +6,7 @@ function readFromDb($table, $queryExtention = NULL){
 		$query = $query . $queryExtention;
 	}
 	$result = mysqli_query($connection, $query);
-	if(!$result){
-		die("can't get data from db" . $query . mysqli_error($connection));
-	}
+	ifQueryFail($result);
 	return $result;
 }
 
@@ -31,10 +29,15 @@ function deleteRowFromDb($tableName, $getValue, $idName){
 		$query .= "WHERE {$idName}_id={$row_id}";
 		$delete_category = mysqli_query($connection, $query);
 		header("Location: {$tableName}.php");
-		if(!$delete_category){
-			die('Cant delete because ' . mysqli_error($connection));
-		}
+		ifQueryFail($delete_category);
 	}
 
+}
+
+function ifQueryFail($nameOfQuery){
+	global $connection;
+	if(!$nameOfQuery){
+		die("Query fail " . mysqli_error($connection));
+	}
 }
 ?>
