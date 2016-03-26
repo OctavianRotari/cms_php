@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<ul class="list-unstyled">
-					<?php displayCategories(" LIMIT 3")?>
+					<?php include "includes/show_categories.php"?>
 				</ul>
 			</div>
 		</div>

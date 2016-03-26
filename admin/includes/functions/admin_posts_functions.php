@@ -22,7 +22,6 @@ function addNewPost(){
 				$empty_values += 1;
 			}
 		}
-		print_r($_POST);
 		if ($empty_values === 0 ){
 			move_uploaded_file($post_image_temp, "../images/$post_image");
 			$query ="INSERT INTO posts(post_title, ";

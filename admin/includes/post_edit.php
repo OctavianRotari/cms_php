@@ -11,11 +11,11 @@
 			<select name="post_category_id">
 				<?php
 					$result = readFromDb("categories");
-					while( $row = mysqli_fetch_assoc($result)){
-						$cat_id = $row['cat_id'];
-						$cat_title = $row['cat_title'];
+					while( $row_category = mysqli_fetch_assoc($result)){
+						$cat_id = $row_category['cat_id'];
+						$cat_title = $row_category['cat_title'];
 						?>
-						<option value='<?php echo $cat_id?>'><?php echo $cat_title?></option>
+						<option value='<?php echo $cat_id;?>'><?php echo $cat_title;?></option>
 						<?php
 					}
 				?>
