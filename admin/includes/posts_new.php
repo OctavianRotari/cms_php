@@ -6,7 +6,7 @@
 			<input class="form-control" type="text" name="post_title">
 		</div>
 		<div class=form-group>
-			<label for="post_category_id">Category</label>
+			<label for="post_category_id">Category</label><br>
 			<select name="post_category_id">
 				<?php
 					$result = readFromDb("categories");

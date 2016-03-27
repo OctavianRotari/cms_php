@@ -103,7 +103,7 @@ function displayContentPostsPage(){
 		case 'edit_post';
 		include "includes/post_edit.php";
 		break;
-	default:
+		default:
 		include "includes/posts_table.php";
 		break;
 	}
