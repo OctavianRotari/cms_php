@@ -1,5 +1,5 @@
-<?php 
-$result = displayPosts();
+<?php
+$result = showContentPostsPage();
 while($row = mysqli_fetch_assoc($result)){
 	$post_id = $row["post_id"];
 	$post_title = $row["post_title"];
