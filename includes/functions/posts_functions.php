@@ -18,7 +18,7 @@ function postsSearchByAuthor($column){
 
 function showContentPostsPage(){
 	if(isset($_GET['cat_id'])){
-		$result =  findRowsInDb('cat_id', 'post_category_id');
+		$result = findRowsInDb('posts', 'cat_id', 'post_category_id');
 	} else if(isset($_POST['submit'])){
 		$result = postsSearchByTags('post_tags', 'search');
 	} else if(isset($_GET['author'])){
@@ -29,20 +29,6 @@ function showContentPostsPage(){
 	return $result;
 }
 
-function findRowsInDb($id = 'id', $columnName = NULL){
-	global $connection;
-	if(isset($_GET[$id])){
-		$table_id = $_GET[$id];
-		if($columnName){
-			$column = $columnName;
-		} else {
-			$column = 'post_id';
-		}
-		$query = "WHERE {$column} = {$table_id}";
-		$result = readFromDb("posts ", $query);
-		return $result;
-	}
-}
 
 function limitParagraphLength($paragraph){
 	$paragraph = substr($paragraph, 0, 300) . '...';

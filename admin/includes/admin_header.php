@@ -21,4 +21,6 @@
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
+<?php include "includes/functions/db.php"?>
+<?php include "includes/functions/common_functions.php"?>
 <body>

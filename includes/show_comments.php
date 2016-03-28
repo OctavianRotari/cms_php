@@ -15,16 +15,16 @@ $post_id = $_GET['id'];
 	</form>
 </div>
 <hr>
+<!-- Posted Comments -->
+<!-- Comment -->
 <?php
-$commentsResult = readFromDb('comments');
+$commentsResult = findRowsInDb('comments', 'id', 'comment_post_id');
 while($row = mysqli_fetch_assoc($commentsResult)){
 	$comment_author = $row["comment_author"];
 	$comment_date = $row['comment_date'];
 	$comment_email = $row['comment_email'];
 	$comment_content = $row['comment_content'];
 ?>
-<!-- Posted Comments -->
-<!-- Comment -->
 <div class="media">
 	<a class="pull-left" href="#">
 		<img class="media-object" src="http://placehold.it/64x64" alt="">

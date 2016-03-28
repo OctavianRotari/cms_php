@@ -18,7 +18,7 @@
 						<a href="categories.php"><i class="fa fa-fw fa-bar-chart-o"></i> Categories</a>
 					</li>
 					<li>
-						<a href="tables.html"><i class="fa fa-fw fa-table"></i> Comments</a>
+						<a href="comments.php"><i class="fa fa-fw fa-table"></i> Comments</a>
 					</li>
 					<li>
 						<a href="javascript:;" data-toggle="collapse" data-target="#users"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>

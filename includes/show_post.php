@@ -1,6 +1,6 @@
 <?php include "functions/posts_functions.php"?>
 <?php
-$postResult = findRowsInDb();
+$postResult = findRowsInDb('posts', 'id', 'post_id' );
 while($row = mysqli_fetch_assoc($postResult)){
 	$post_title = $row["post_title"];
 	$post_author = $row["post_author"];
