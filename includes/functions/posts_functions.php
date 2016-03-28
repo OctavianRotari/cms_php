@@ -1,15 +1,16 @@
-<?php include "db.php"?>
-<?php include "read_from_db_function.php"?>
 <?php
 
-function displayCategories(){
-	$result = readFromDb("categories");
-	return $result;
-}
-
-function blogSearch($column, $searchedWord){
+function postsSearchByTags($column, $searchedWord){
 	if(isset($_POST['submit'])){
 		$search = $_POST[$searchedWord];
+		$result = readFromDb("posts", " WHERE {$column} LIKE '%$search%'");
+		return $result;
+	}
+}
+
+function postsSearchByAuthor($column){
+	if(isset($_GET['author'])){
+		$search = $_GET['author'];
 		$result = readFromDb("posts", " WHERE {$column} LIKE '%$search%'");
 		return $result;
 	}
@@ -19,7 +20,9 @@ function showContentPostsPage(){
 	if(isset($_GET['cat_id'])){
 		$result =  findRowsInDb('cat_id', 'post_category_id');
 	} else if(isset($_POST['submit'])){
-		$result = blogSearch('post_tags', 'search');
+		$result = postsSearchByTags('post_tags', 'search');
+	} else if(isset($_GET['author'])){
+		$result = postsSearchByAuthor('post_author', 'author');
 	} else {
 		$result = readFromDb("posts");
 	}
@@ -46,20 +49,5 @@ function limitParagraphLength($paragraph){
 	return $paragraph;
 }
 
-function displayContentOfPage(){
-	if(isset($_GET['source'])){
-		$source = $_GET['source'];
-	} else {
-		$source = '';
-	}
-	switch($source){
-		case 'show_post';
-		include "includes/show_post.php";
-		break;
-		default:
-		include 'includes/show_posts.php';
-		break;
-	}
-}
 ?>
 

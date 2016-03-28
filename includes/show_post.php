@@ -1,6 +1,7 @@
+<?php include "functions/posts_functions.php"?>
 <?php
-$result = findRowsInDb();
-while($row = mysqli_fetch_assoc($result)){
+$postResult = findRowsInDb();
+while($row = mysqli_fetch_assoc($postResult)){
 	$post_title = $row["post_title"];
 	$post_author = $row["post_author"];
 	$post_date = $row['post_date'];
@@ -21,4 +22,4 @@ while($row = mysqli_fetch_assoc($result)){
 <?php
 }
 ?>
-
+<?php include "includes/show_comments.php"?>

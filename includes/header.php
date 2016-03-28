@@ -26,4 +26,5 @@
     <![endif]-->
 
 </head>
-
+<?php include "includes/functions/db.php"?>
+<?php include "includes/functions/common_functions.php"?>
