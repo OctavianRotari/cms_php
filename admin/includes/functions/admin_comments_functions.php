@@ -34,10 +34,10 @@ function updateCommentInDb(){
 function changeStatus(){
 	global $connection;
 	$value = NULL;
-	if(isset($_POST['aprove_comment'])){
-		$value = $_POST['aprove_comment'];
-	} else if(isset($_POST['unaprove_comment'])){
-		$value = $_POST['unaprove_comment'];
+	if(isset($_POST['approve_comment'])){
+		$value = $_POST['approve_comment'];
+	} else if(isset($_POST['unapprove_comment'])){
+		$value = $_POST['unapprove_comment'];
 	}
 	if($value){
 		$comment_id = $_POST['comment_id'];

@@ -9,8 +9,8 @@
 				<th>Post Title</th>
 				<th>Status</th>
 				<th>Date</th>
-				<th>Aprove</th>
-				<th>Unaprove</th>
+				<th>Approve</th>
+				<th>Unapprove</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
@@ -18,7 +18,7 @@
 		<tbody>
 			<?php 
 			deleteRowFromDb("comments", "delete_comment", "comment");
-			$result = readFromdb("comments");
+			$result = readFromdb("comments", " ORDER BY comment_id DESC");
 			while( $row = mysqli_fetch_assoc($result)){
 				?>
 				<tr>
@@ -36,13 +36,13 @@
 				<td>
 					<form action="comments.php" method="post">
 						<input type="hidden" value="<?php echo $row['comment_id'];?>" name="comment_id">
-						<input  class="btn btn-success" type="submit" name="aprove_comment" value="aproved">
+						<input  class="btn btn-success" type="submit" name="approve_comment" value="approved">
 					</form>
 				</td>
 				<td>
 					<form action="comments.php" method="post">
 						<input type="hidden" value="<?php echo $row['comment_id'];?>" name="comment_id">
-						<input class="btn btn-warning" type="submit" name="unaprove_comment" value="unaproved">
+						<input class="btn btn-warning" type="submit" name="unapprove_comment" value="unapproved">
 					</form>
 				</td>
 				<?php changeStatus();?>

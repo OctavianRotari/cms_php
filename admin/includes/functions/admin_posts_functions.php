@@ -9,7 +9,7 @@ function addNewPost(){
 		$post_image  = $_FILES['post_image']['name'];
 		$post_image_temp  = $_FILES['post_image']['tmp_name'];
 		$post_tags  = $_POST['post_tags'];
-		$post_comment_count  = '23';
+		$post_comment_count  = 0;
 		$post_content = $_POST['post_content'];
 		$post_date = date('Y-m-d H:i:s');
 		$post_status = "draft";
@@ -83,6 +83,16 @@ function getCategoryTitleUsingCatId($row){
 	$category_query = readFromDb('categories', " WHERE cat_id={$category_id}");
 	$category_row = mysqli_fetch_assoc($category_query);
 	return $category_row;
+}
+
+function countCommentsUsingId($row){
+	$post_id = $row['post_id'];
+	$comments_query = readFromDb('comments', " WHERE comment_post_id={$post_id}");
+	$commentsCount = 0;
+	while($row = mysqli_fetch_assoc($comments_query)){
+		$commentsCount += 1;
+	}
+	return $commentsCount;
 }
 
 function displayContentPostsPage(){

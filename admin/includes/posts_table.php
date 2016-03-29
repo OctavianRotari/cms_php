@@ -9,8 +9,11 @@
 				<th>Status</th>
 				<th>Image</th>
 				<th>Tags</th>
-				<th>Comments</th>
+				<th>Comments<br>Count</th>
 				<th>Date</th>
+				<th>Edit</th>
+				<th>Show</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,7 +33,7 @@
 				<td><?php echo $row['post_status'];?></td>
 				<td><img src='../images/<?php echo $row['post_image'];?>' width='100px'height='100px'></td>
 				<td><?php echo $row['post_tags'];?></td>
-				<td>Comments</td>
+				<td><?php echo countCommentsUsingId($row);?></td>
 				<td><?php echo $row['post_date'];?></td>
 				<td><a href='posts.php?source=edit_post&id=<?php echo $row['post_id'];?>'>Edit</a></td>
 				<td><a href='posts.php?source=show_post&id=<?php echo $row['post_id'];?>'>Show</a></td>
