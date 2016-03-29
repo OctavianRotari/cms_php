@@ -1,19 +1,9 @@
-<?php include "includes/functions/users_functions.php";?>
 <div class="col-md-4">
-	<div class="well">
-		<?php signIn();?>
-		<form action="#" method="post" enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="user_name">Put your Username:</label><br>
-				<input class="form-control" type="text" name="user_name" >
-			</div>
-			<div class="form-group">
-				<label for="user_password">Put your Password:</label><br>
-				<input class="form-control" type="password" name="user_password">
-			</div>
-			<button type="submit" name="sign_in" value="submited" class="btn btn-primary">Sign-in</button>
-		</form>
-	</div>
+<?php
+if(!isset($_GET['source']) == 'create_account'){
+	include "includes/signin_form.php";
+}
+?>
 	<!-- Blog Search Well -->
 	<div class="well">
 		<h4>Blog Search</h4>

@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!$_SESSION['auth']){
+	header('location:../index.php');
+}
+?>
 <?php ob_start();?>
 <!DOCTYPE html>
 <html lang="en">

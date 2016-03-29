@@ -28,3 +28,4 @@
 </head>
 <?php include "includes/functions/db.php"?>
 <?php include "includes/functions/common_functions.php"?>
+<?php include "includes/functions/users_functions.php";?>

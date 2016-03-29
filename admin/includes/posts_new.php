@@ -21,10 +21,6 @@
 			</select>
 		</div>
 		<div class=form-group>
-			<label for="post_author">Author</label>
-			<input class="form-control" type="text" name="post_author">
-		</div>
-		<div class=form-group>
 			<label for="post_image">Image</label>
 			<input type="file" name="post_image">
 		</div>

@@ -5,7 +5,7 @@ function addNewPost(){
 	if(isset($_POST['add_new_post'])){
 		$post_title  = $_POST['post_title'];
 		$post_category_id  = $_POST['post_category_id'];
-		$post_author = $_POST['post_author'];
+		$post_author = $_SESSION['user_name'];
 		$post_image  = $_FILES['post_image']['name'];
 		$post_image_temp  = $_FILES['post_image']['tmp_name'];
 		$post_tags  = $_POST['post_tags'];
@@ -42,7 +42,6 @@ function updatePostInDb(){
 	if(isset($_POST['update_post'])){
 		$post_id = $_GET['id'];
 		$post_title = $_POST['post_title'];
-		$post_author = $_POST['post_author'];
 		$post_category_id  = $_POST['post_category_id'];
 		$post_image  = $_FILES['post_image']['name'];
 		$post_image_temp  = $_FILES['post_image']['tmp_name'];
@@ -60,7 +59,6 @@ function updatePostInDb(){
 			move_uploaded_file($post_image_temp, "../images/$post_image");
 			$query = "UPDATE posts SET";
 			$query .= " post_title='{$post_title}',";
-			$query .= " post_author='{$post_author}',";
 			if($_FILES['post_image']['size'] > 0){
 				$query .= " post_image='{$post_image}',";
 			}

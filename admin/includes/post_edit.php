@@ -22,10 +22,6 @@
 			</select>
 		</div>
 		<div class=form-group>
-			<label for="post_author">Author</label>
-			<input class="form-control" value="<?php echo $row['post_author']?>" type="text" name="post_author">
-		</div>
-		<div class=form-group>
 			<label for="current_image">Current Image</label><br>
 			<img name="current_image" src="../images/<?php echo $row['post_image']?>" width="300px" height="300px" name="post_current_image"><br>
 			<label for="post_image">Image url</label>

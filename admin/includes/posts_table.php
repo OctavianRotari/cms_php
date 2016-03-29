@@ -19,7 +19,8 @@
 		<tbody>
 			<?php 
 			deleteRowFromDb("posts", "delete_post", "post");
-			$result = readFromdb("posts");
+			$current_user = $_SESSION['user_name'];
+			$result = readFromdb("posts", " WHERE post_author='{$current_user}'");
 			while( $row = mysqli_fetch_assoc($result)){
 				?>
 				<tr>

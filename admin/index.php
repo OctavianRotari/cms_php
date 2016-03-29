@@ -1,9 +1,3 @@
-<?php 
-session_start();
-if(!$_SESSION['auth']){
-	header('location:../index.php');
-}
-?>
 <?php include "includes/admin_header.php"?>
 <?php include "includes/admin_navigation.php"?>
 	<div id="page-wrapper">
