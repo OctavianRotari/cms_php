@@ -5,13 +5,22 @@ $post_id = $_GET['id'];
 <!-- Blog Comments -->
 <!-- Comments Form -->
 <?php addCommentToDb();?>
-<div class="well">
-	<h4>Leave a Comment:</h4>
-	<form action="index.php?source=show_post&id=<?php echo $post_id;?>" method="post">
+		<div class="well">
+			<h4>Leave a Comment:</h4>
+			<form action="index.php?source=show_post&id=<?php echo $post_id;?>" method="post">
 		<div class="form-group">
+			<label for="comment_author">Put your name:</label><br>
+			<input class="form-control" type="text" name="comment_author" >
+		</div>
+		<div class="form-group">
+			<label for="comment_email">Put your email:</label><br>
+			<input class="form-control" type="text" name="comment_email">
+		</div>
+		<div class="form-group">
+			<label for="comment_content">Put your comment:</label><br>
 			<textarea class="form-control" name="comment_content" rows="3"></textarea>
 		</div>
-		<button type="submit" name="submit_comment" class="btn btn-primary">Submit</button>
+		<button type="submit" name="submit_comment" value="submited" class="btn btn-primary">Submit</button>
 	</form>
 </div>
 <hr>
