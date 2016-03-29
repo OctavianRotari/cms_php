@@ -20,7 +20,7 @@ function updateCommentInDb(){
 			$query .= " comment_author='{$comment_author}',";
 			$query .= " comment_email='{$comment_email}',";
 			$query .= " comment_content='{$comment_content}',";
-			$query .= " comment_status='{$comment_status}',";
+			$query .= " comment_status='{$comment_status}'";
 			$query .= " WHERE comment_id='{$comment_id}'";
 			$updating_comment = mysqli_query($connection, $query);
 			ifQueryFail($updating_comment);
@@ -28,6 +28,25 @@ function updateCommentInDb(){
 		} else {
 			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
 		}
+	}
+}
+
+function changeStatus(){
+	global $connection;
+	$value = NULL;
+	if(isset($_POST['aprove_comment'])){
+		$value = $_POST['aprove_comment'];
+	} else if(isset($_POST['unaprove_comment'])){
+		$value = $_POST['unaprove_comment'];
+	}
+	if($value){
+		$comment_id = $_POST['comment_id'];
+		$query = "UPDATE comments SET";
+		$query .= " comment_status='{$value}'";
+		$query .= " WHERE comment_id='{$comment_id}'";
+		$updating_comment = mysqli_query($connection, $query);
+		ifQueryFail($updating_comment);
+		header("Location: comments.php");
 	}
 }
 

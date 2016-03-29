@@ -6,7 +6,7 @@
 	$post_title = $post_row['post_title'];
 	echo "<h3>Post Title: {$post_title}</h3>";
 	?>
-	<form action="comments.php?source=edit_comment&id=<?php echo $_GET['id']?>" method="comment" enctype="multipart/form-data">
+	<form action="comments.php?source=edit_comment&id=<?php echo $_GET['id']?>" method="post" enctype="multipart/form-data">
 		<div class=form-group>
 			<label for="comment_title">Author</label>
 			<input class="form-control" value="<?php echo $row['comment_author']?>" type="text" name="comment_author">
