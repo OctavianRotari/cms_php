@@ -18,6 +18,9 @@
 			<li>
 				<a href="admin">Admin</a>
 			</li>
+			<li>
+				<a href="index.php?source=create_account">Sign-up</a>
+			</li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
