@@ -1,4 +1,3 @@
-<?php include "includes/functions/users_functions.php"?>
 <?php addNewUser();?>
 <div class="well">
 	<form action="#" method="post" enctype="multipart/form-data">

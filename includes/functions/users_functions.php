@@ -1,4 +1,19 @@
 <?php
+
+function signIn(){
+	if(isset($_POST['sign_in'])){
+		$user_name = $_POST['user_name'];
+		$user_password = $_POST['user_password'];
+		$result = readFromDb('users', " WHERE user_name='{$user_name}' AND user_password='{$user_password}'");
+		$row = mysqli_fetch_assoc($result);
+		if($row['user_name'] == $user_name || $row['user_password'] == $user_password){
+			session_start();
+			$_SESSION['auth'] = 'true';
+			echo "Successfuly authenticated";
+		}
+	}
+}
+
 function addNewUser(){
 	global $connection;
 	if(isset($_POST['create_account'])){

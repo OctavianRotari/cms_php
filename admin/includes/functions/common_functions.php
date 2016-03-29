@@ -40,4 +40,13 @@ function ifQueryFail($nameOfQuery){
 		die("Query fail " . mysqli_error($connection));
 	}
 }
+
+function signOut(){
+	if(isset($_GET['signOut'])){
+		session_start();
+		session_unset();
+		session_destroy();
+		header('location:../index.php');
+	}
+}
 ?>

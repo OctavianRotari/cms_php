@@ -1,5 +1,7 @@
+<?php include "includes/functions/users_functions.php";?>
 <div class="col-md-4">
 	<div class="well">
+		<?php signIn();?>
 		<form action="#" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="user_name">Put your Username:</label><br>
@@ -9,7 +11,7 @@
 				<label for="user_password">Put your Password:</label><br>
 				<input class="form-control" type="password" name="user_password">
 			</div>
-			<button type="submit" name="login" value="submited" class="btn btn-primary">Sign-in</button>
+			<button type="submit" name="sign_in" value="submited" class="btn btn-primary">Sign-in</button>
 		</form>
 	</div>
 	<!-- Blog Search Well -->
