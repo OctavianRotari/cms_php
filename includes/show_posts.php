@@ -1,6 +1,10 @@
 <?php include "functions/posts_functions.php"?>
 <?php
 $result = showContentPostsPage();
+$rowCount = $result->num_rows;
+if($rowCount === 0 ){
+	echo "<h3 class='text-center'>No results found</h3>";
+}
 while($row = mysqli_fetch_assoc($result)){
 	$post_id = $row["post_id"];
 	$post_title = $row["post_title"];
