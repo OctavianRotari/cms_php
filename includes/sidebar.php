@@ -1,6 +1,6 @@
 <div class="col-md-4">
 <?php
-if(!isset($_GET['source']) == 'create_account'){
+if(!isset($_SESSION['auth'])){
 	include "includes/signin_form.php";
 }
 ?>

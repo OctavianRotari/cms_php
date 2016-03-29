@@ -26,4 +26,12 @@ function findRowsInDb($tableName, $id, $columnName, $extendQuery = NULL){
 	}
 }
 
+function signOut(){
+	if(isset($_GET['signOut'])){
+		session_start();
+		session_unset();
+		session_destroy();
+		header('location:index.php');
+	}
+}
 ?>

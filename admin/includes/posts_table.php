@@ -18,7 +18,11 @@
 		</thead>
 		<tbody>
 			<?php 
-			deleteRowFromDb("posts", "delete_post", "post");
+			if(isset($_GET['delete_post'])){
+				deleteRowFromDb("posts", "delete_post", "post");
+				deleteRowFromDb("comments", "delete_post", "comments_post");
+				header("Location: posts.php");
+			}
 			$current_user = $_SESSION['user_name'];
 			$result = readFromdb("posts", " WHERE post_author='{$current_user}'");
 			while( $row = mysqli_fetch_assoc($result)){

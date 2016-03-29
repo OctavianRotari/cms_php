@@ -12,15 +12,28 @@
 			<a class="navbar-brand" href="index.php">CMS Front</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<div class="navbar-header collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<?php include "includes/show_categories.php"?>
 			<li>
 				<a href="admin">Admin</a>
 			</li>
-			<li>
-				<a href="index.php?source=create_account">Sign-up</a>
-			</li>
+			<?php
+			if(isset($_SESSION['auth'])){
+				?>
+				<li>
+					<?php signOut()?>
+					<a href="index.php?signOut=true"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+				</li>
+				<?php
+			} else {
+				?>
+				<li>
+					<a href="index.php?source=create_account">Sign-up</a>
+				</li>
+				<?php
+			}
+			?>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

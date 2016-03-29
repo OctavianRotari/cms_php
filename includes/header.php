@@ -1,4 +1,7 @@
-<?php ob_start();?>
+<?php
+ob_start(); 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +29,7 @@
     <![endif]-->
 
 </head>
+<body>
 <?php include "includes/functions/db.php"?>
 <?php include "includes/functions/common_functions.php"?>
 <?php include "includes/functions/users_functions.php";?>

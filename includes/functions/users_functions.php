@@ -7,12 +7,11 @@ function signIn(){
 		$result = readFromDb('users', " WHERE user_name='{$user_name}' AND user_password='{$user_password}'");
 		$row = mysqli_fetch_assoc($result);
 		if($row['user_name'] == $user_name || $row['user_password'] == $user_password){
-			session_start();
 			$_SESSION['auth'] = 'true';
 			$_SESSION['user_name'] = $row['user_name'];
 			$_SESSION['user_role'] = $row['user_role'];
 			$_SESSION['user_id'] = $row['user_id'];
-			echo "Successfuly authenticated";
+			header("Location:index.php");
 		}
 	}
 }
