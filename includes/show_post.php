@@ -17,7 +17,6 @@ while($row = mysqli_fetch_assoc($postResult)){
 	<img class='img-responsive' src='images/<?php echo $post_image;?>' alt='' height='300px' width='300px'>
 	<hr>
 	<p maxlength='10'><?php echo $post_content;?></p>
-	<a class='btn btn-primary' href='index.php'><span class='glyphicon glyphicon-chevron-left'></span> Go Back</a>
 	<hr>
 <?php
 }

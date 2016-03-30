@@ -22,7 +22,6 @@ while($row = mysqli_fetch_assoc($result)){
 	<img class='img-responsive' src='images/<?php echo $post_image;?>' alt='' height='300px' width='300px'>
 	<hr>
 	<p maxlength='10'><?php echo limitParagraphLength($post_content);?></p>
-	<a class='btn btn-primary' href='index.php?source=show_post&id=<?php echo $post_id;?>'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>
 	<hr>
 <?php
 }

@@ -2,11 +2,11 @@
 <?php addNewPost();?>
 	<form action="posts.php?source=add_post" method="post" enctype="multipart/form-data">
 		<div class=form-group>
-			<label for="post_title">Title</label>
+			<label for="post_title">Title:</label>
 			<input class="form-control" type="text" name="post_title">
 		</div>
 		<div class=form-group>
-			<label for="post_category_id">Category</label><br>
+			<label for="post_category_id">Category:</label><br>
 			<select name="post_category_id">
 				<?php
 					$result = readFromDb("categories");
@@ -21,15 +21,15 @@
 			</select>
 		</div>
 		<div class=form-group>
-			<label for="post_image">Image</label>
+			<label for="post_image">Image:</label>
 			<input type="file" name="post_image">
 		</div>
 		<div class=form-group>
-			<label for="post_tags">Tags</label>
+			<label for="post_tags">Tags:</label>
 			<input class="form-control" type="text" name="post_tags">
 		</div>
 		<div class=form-group>
-			<label for="post_content">Content</label>
+			<label for="post_content">Content:</label>
 			<textarea class="form-control" type="text" name="post_content" rows="10"></textarea>
 		</div>
 		<div class=form-group>

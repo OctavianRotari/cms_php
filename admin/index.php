@@ -135,7 +135,7 @@
 				chart.draw(data, options);
 			}
 			</script>
-			<div id="columnchart_material" style="height: 500px;"></div>
+			<div class="row" id="columnchart_material" style="height: 500px; width:'auto'"></div>
 				<!-- /.row -->
 		</div>
 		<!-- /.container-fluid -->
