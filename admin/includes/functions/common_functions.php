@@ -12,10 +12,7 @@ function readFromDb($table, $queryExtention = NULL){
 
 function countRowsInDb($table, $query = NULL){
 	$result = readFromDb($table, $query);
-	$numOfRows = 0;
-	while(mysqli_fetch_assoc($result)){
-		$numOfRows += 1;
-	}
+	$numOfRows = mysqli_num_rows($result);
 	return $numOfRows;
 }
 

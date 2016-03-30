@@ -108,6 +108,34 @@
 					</div>
 				</div>
 			</div>
+			<script type="text/javascript">
+			<?php
+			$totalNumberOfPosts = countRowsInDb('posts', " WHERE post_author='{$_SESSION['user_name']}'");
+			$numberOfDraftPosts = countRowsInDb('posts', " WHERE post_author='{$_SESSION['user_name']}' AND post_status = 'draft'");
+			$numberOfPublishedPosts = countRowsInDb('posts', " WHERE post_author='{$_SESSION['user_name']}' AND post_status = 'published'");
+			$totalNumberOfComments = countRowsInDb('comments', " WHERE comment_post_author='{$_SESSION['user_name']}'");
+			$numberOfDraftComments = countRowsInDb('comments', " WHERE comment_post_author='{$_SESSION['user_name']}' AND comment_status = 'unapproved'");
+			$numberOfPublishedComments = countRowsInDb('comments', " WHERE comment_post_author='{$_SESSION['user_name']}' AND comment_status = 'approved'");
+			?>
+			google.charts.load('current', {'packages':['bar']});
+			google.charts.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+					['<?php echo $_SESSION['user_name'];?>', 'Draft', 'Published', 'Total'],
+					['Posts', <?php echo $numberOfDraftPosts;?>, <?php echo $numberOfPublishedPosts;?>, <?php echo $totalNumberOfPosts;?>],
+					['Comments', <?php echo $numberOfDraftComments;?>, <?php echo $numberOfPublishedComments;?>, <?php echo $totalNumberOfComments;?>],
+				]);
+				var options = {
+				chart: {
+				title: 'Posts & comments',
+					subtitle: 'Published or not',
+				}
+				};
+				var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+				chart.draw(data, options);
+			}
+			</script>
+			<div id="columnchart_material" style="height: 500px;"></div>
 				<!-- /.row -->
 		</div>
 		<!-- /.container-fluid -->
