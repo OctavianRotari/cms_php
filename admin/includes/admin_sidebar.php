@@ -31,7 +31,7 @@
 							<a href="users.php">Show All Users</a>
 						</li>
 						<li>
-							<a href="#">Dropdown Item</a>
+							<a href="users.php?source=add_user">Add User</a>
 						</li>
 					</ul>
 				</li>

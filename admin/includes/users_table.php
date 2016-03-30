@@ -17,11 +17,11 @@ if($user_role === 'admin'){
 			</tr>
 		</thead>
 		<tbody>
-<?php 
-	//deleteRowFromDb("users", "delete_user", "user");
-	$result = readFromdb("users", " ORDER BY user_id DESC");
-	while( $row = mysqli_fetch_assoc($result)){
-?>
+		<?php 
+			deleteRowFromDb("users", "delete_user", "user");
+			$result = readFromdb("users", " ORDER BY user_id DESC");
+			while( $row = mysqli_fetch_assoc($result)){
+		?>
 				<tr>
 				<td><?php echo $row['user_id'];?></td>
 				<td><?php echo $row['user_name'];?></td>
@@ -32,9 +32,9 @@ if($user_role === 'admin'){
 				<td><?php echo $row['user_role'];?></td>
 				<td><a href='users.php?delete_user=<?php echo $row['user_id'];?>'>Delete</a></td>
 				<tr>
-<?php
-	}
-?>
+		<?php
+			}
+		?>
 		</tbody>
 
 	</table>
