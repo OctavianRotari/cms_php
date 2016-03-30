@@ -26,6 +26,13 @@ function findRowsInDb($tableName, $id, $columnName, $extendQuery = NULL){
 	}
 }
 
+function ifQueryFail($nameOfQuery){
+	global $connection;
+	if(!$nameOfQuery){
+		die("Query fail " . mysqli_error($connection));
+	}
+}
+
 function signOut(){
 	if(isset($_GET['signOut'])){
 		session_start();

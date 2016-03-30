@@ -2,8 +2,11 @@
 
 function signIn(){
 	if(isset($_POST['sign_in'])){
+		global $connection;
 		$user_name = $_POST['user_name'];
 		$user_password = $_POST['user_password'];
+		$user_name = mysqli_real_escape_string($connection, $user_name);
+		$user_password = mysqli_real_escape_string($connection, $user_password);
 		$result = readFromDb('users', " WHERE user_name='{$user_name}' AND user_password='{$user_password}'");
 		$row = mysqli_fetch_assoc($result);
 		if($row['user_name'] == $user_name || $row['user_password'] == $user_password){
@@ -11,7 +14,7 @@ function signIn(){
 			$_SESSION['user_name'] = $row['user_name'];
 			$_SESSION['user_role'] = $row['user_role'];
 			$_SESSION['user_id'] = $row['user_id'];
-			header("Location:index.php");
+			header("Location:admin/index.php");
 		}
 	}
 }
@@ -44,9 +47,7 @@ function addNewUser(){
 			$query .= "'$user_firstname', '$user_secondname', '$user_email', ";
 			$query .= "'$user_image', '$user_role', '$rand_salt')";
 			$adding_new_user = mysqli_query($connection, $query);
-			if(!$adding_new_user){
-				die("Query fail " . mysqli_error($connection));
-			}
+			ifQueryFail($adding_new_user);
 		} else {
 			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
 		}

@@ -50,7 +50,6 @@ function updateUserInDb(){
 		$user_secondname  = $_POST['user_secondname'];
 		$user_email = $_POST['user_email'];
 		$user_role = $_POST['user_role'];
-		$rand_salt = '12345';
 		$submited_form = $_POST;
 		$empty_values = 0;
 		foreach( $submited_form  as $key => $value){
@@ -60,18 +59,17 @@ function updateUserInDb(){
 		}
 		if ($empty_values === 0 ){
 			move_uploaded_file($user_image_temp, "../images/$user_image");
-			$query ="UPDATE posts SET ";
-			$query = "user_name='{$user_name}', ";
+			$query ="UPDATE users SET ";
+			$query .= "user_name='{$user_name}', ";
 			$query .= "user_password='{$user_password}', ";
 			$query .= "user_firstname='{$user_firstname}', ";
 			$query .= "user_secondname='{$user_secondname}', ";
 			$query .= "user_email='{$user_email}', ";
 			if($_FILES['user_image']['size'] > 0){
-				$query .= " user_image='{$user_image}',";
+				$query .= " user_image='{$user_image}', ";
 			}
-			$query .= "user_role='{$user_role}', ";
-			$query = "rand_salt='{$rand_salt}'";
-			$query .= " WHERE user_id='{$user_id}'";
+			$query .= "user_role='{$user_role}' ";
+			$query .= "WHERE user_id='{$user_id}'";
 			$updateUser = mysqli_query($connection, $query);
 			header('Location: users.php');
 			if(!$updateUser){

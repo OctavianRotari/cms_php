@@ -27,7 +27,7 @@
 		<div class="form-group">
 			<label for="user_role">Role:</label><br>
 			<select name="user_role" id="">
-				<option value=""><?php echo $row['user_role'];?></option>
+				<option value="<?php echo $row['user_role'];?>"><?php echo $row['user_role'];?></option>
 				<?php
 				if($row['user_role'] == 'user'){
 					?>
