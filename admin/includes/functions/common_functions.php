@@ -10,6 +10,15 @@ function readFromDb($table, $queryExtention = NULL){
 	return $result;
 }
 
+function countRowsInDb($table, $query = NULL){
+	$result = readFromDb($table, $query);
+	$numOfRows = 0;
+	while(mysqli_fetch_assoc($result)){
+		$numOfRows += 1;
+	}
+	return $numOfRows;
+}
+
 function findRowInDb($tableName, $getValue, $idName){
 	global $connection;
 	if(isset($_GET[$getValue])){
