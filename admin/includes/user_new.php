@@ -22,8 +22,16 @@
 			<input class="form-control" type="text" name="user_secondname">
 		</div>
 		<div class="form-group">
+			<label for="user_role">Role:</label><br>
+			<select name="user_role" id="">
+				<option value="">Select Options</option>
+				<option value="admin">Admin</option>
+				<option value="user">User</option>
+			</select>
+		</div>
+		<div class="form-group">
 			<label for="user_email">Email:</label><br>
-			<input class="form-control" type="text" name="user_email">
+			<input class="form-control" type="email" name="user_email">
 		</div>
 		<div class=form-group>
 			<input class="btn btn-primary" value="Add user" type="submit" name="add_new_user">

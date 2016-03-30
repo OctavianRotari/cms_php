@@ -31,6 +31,7 @@ if($user_role === 'admin'){
 				<td><img src='../images/<?php echo $row['user_image'];?>' width='100px'height='100px'></td>
 				<td><?php echo $row['user_role'];?></td>
 				<td><a href='users.php?delete_user=<?php echo $row['user_id'];?>'>Delete</a></td>
+				<td><a href='users.php?source=edit_user&id=<?php echo $row['user_id'];?>'>Edit</a></td>
 				<tr>
 		<?php
 			}

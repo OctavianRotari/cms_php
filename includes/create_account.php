@@ -23,7 +23,7 @@
 		</div>
 		<div class="form-group">
 			<label for="user_email">Put your Email:</label><br>
-			<input class="form-control" type="text" name="user_email">
+			<input class="form-control" type="email" name="user_email">
 		</div>
 		<button type="submit" name="create_account" value="submited" class="btn btn-primary">Create Account</button>
 	</form>
