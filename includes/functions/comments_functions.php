@@ -9,9 +9,9 @@ function addCommentToDb(){
 			$comment_post_author = $post_row['post_author'];
 		}
 		$comment_post_id = $_GET['id'];
-		$comment_author = $_POST['comment_author'];
-		$comment_email = $_POST['comment_email'];
-		$comment_content = $_POST['comment_content'];
+		$comment_author = escape($_POST['comment_author']);
+		$comment_email = escape($_POST['comment_email']);
+		$comment_content = escape($_POST['comment_content']);
 		$comment_status = "unapproved";
 		$submited_form = $_POST;
 		$empty_values = 0;

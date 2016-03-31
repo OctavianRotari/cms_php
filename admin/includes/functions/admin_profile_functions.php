@@ -4,14 +4,14 @@ function updateProfileInDb(){
 	global $connection;
 	global $msg;
 	if(isset($_POST['edit_profile'])){
-		$user_id = $_SESSION['user_id'];
-		$user_name  = $_POST['user_name'];
-		$user_password  = $_POST['user_password'];
-		$user_firstname = $_POST['user_firstname'];
-		$user_image  = $_FILES['user_image']['name'];
-		$user_image_temp  = $_FILES['user_image']['tmp_name'];
-		$user_secondname  = $_POST['user_secondname'];
-		$user_email = $_POST['user_email'];
+		$user_id = escape($_SESSION['user_id']);
+		$user_name  = escape($_POST['user_name']);
+		$user_password  = escape($_POST['user_password']);
+		$user_firstname = escape($_POST['user_firstname']);
+		$user_image  = escape($_FILES['user_image']['name']);
+		$user_image_temp  = escape($_FILES['user_image']['tmp_name']);
+		$user_secondname  = escape($_POST['user_secondname']);
+		$user_email = escape($_POST['user_email']);
 		$submited_form = $_POST;
 		$empty_values = 0;
 

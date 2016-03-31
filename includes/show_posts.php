@@ -26,24 +26,28 @@ while($row = mysqli_fetch_assoc($result['posts'])){
 	<hr>
 <?php
 }
-$number_of_pages = $result['posts_count']/5;
+?>
+<ul class='pager'>
+<?php
+$number_of_pages = ceil($result['posts_count']/5);
 for($i = 0; $i < $number_of_pages; $i++){
 	if(array_key_exists('author', $result)){
 	?>
-		<a href="index.php?author=<?php echo $result['author'];?>&page=<?php echo $i?>"><?php echo $i?></a>
+		<li><a href="index.php?page=<?php echo $i?>&author=<?php echo $result['author'];?>"><?php echo $i?></a></li>
 	<?php
 	} else if(array_key_exists('search', $result)){
 	?>
-		<a href="index.php?search=<?php echo $result['search'];?>&page=<?php echo $i?>"><?php echo $i?></a>
+		<li><a href="index.php?page=<?php echo $i?>&search=<?php echo $result['search'];?>"><?php echo $i?></a></li>
 	<?php
 	} else if(array_key_exists('cat_id', $result)){
 	?>
-		<a href="index.php?cat_id=<?php echo $result['cat_id'];?>&page=<?php echo $i?>"><?php echo $i?></a>
+		<li><a href="index.php?page=<?php echo $i?>&cat_id=<?php echo $result['cat_id'];?>"><?php echo $i?></a></li>
 	<?php
 	} else {
 		?>
-			<a href="index.php?page=<?php echo $i?>"><?php echo $i?></a>
+			<li><a href="index.php?page=<?php echo $i?>"><?php echo $i?></a>
 		<?php
 	}
 }
 ?>
+</ul>

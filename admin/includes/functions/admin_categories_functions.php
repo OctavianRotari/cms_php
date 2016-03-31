@@ -5,8 +5,8 @@
 function updateCategoryInDb(){
 	global $connection;
 	if(isset($_POST['update'])){
-		$cat_id = $_POST['cat_id'];
-		$cat_title = $_POST['cat_title'];
+		$cat_id = escape($_POST['cat_id']);
+		$cat_title = escape($_POST['cat_title']);
 		$query = "UPDATE categories SET ";
 		$query .= " cat_title='{$cat_title}'";
 		$query .= " WHERE cat_id='{$cat_id}'";
@@ -18,7 +18,7 @@ function updateCategoryInDb(){
 function insertingCategoriesIntoDb(){
 	global $connection;
 	if(isset($_POST['submit'])){
-		$cat_title = $_POST['cat_title'];
+		$cat_title = escape($_POST['cat_title']);
 		if($cat_title == "" || empty($cat_title)){
 			echo "this field should not be empty";
 		} else {

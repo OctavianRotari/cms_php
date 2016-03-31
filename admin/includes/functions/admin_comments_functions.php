@@ -4,12 +4,12 @@ function changeStatus(){
 	global $connection;
 	$value = NULL;
 	if(isset($_POST['approve_comment'])){
-		$value = $_POST['approve_comment'];
+		$value = escape($_POST['approve_comment']);
 	} else if(isset($_POST['unapprove_comment'])){
-		$value = $_POST['unapprove_comment'];
+		$value = escape($_POST['unapprove_comment']);
 	}
 	if($value){
-		$comment_id = $_POST['comment_id'];
+		$comment_id = escape($_POST['comment_id']);
 		$query = "UPDATE comments SET";
 		$query .= " comment_status='{$value}'";
 		$query .= " WHERE comment_id='{$comment_id}'";

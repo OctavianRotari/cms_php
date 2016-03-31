@@ -15,14 +15,14 @@ function addNewPost(){
 	global $connection;
 	global $msg;
 	if(isset($_POST['add_new_post'])){
-		$post_title  = $_POST['post_title'];
-		$post_category_id  = $_POST['post_category_id'];
-		$post_author = $_SESSION['user_name'];
-		$post_image  = $_FILES['post_image']['name'];
-		$post_image_temp  = $_FILES['post_image']['tmp_name'];
-		$post_tags  = $_POST['post_tags'];
+		$post_title  = escape($_POST['post_title']);
+		$post_category_id  = escape($_POST['post_category_id']);
+		$post_author = escape($_SESSION['user_name']);
+		$post_image  = escape($_FILES['post_image']['name']);
+		$post_image_temp  = escape($_FILES['post_image']['tmp_name']);
+		$post_tags  = escape($_POST['post_tags']);
 		$post_comment_count  = 0;
-		$post_content = $_POST['post_content'];
+		$post_content = escape($_POST['post_content']);
 		$post_date = date('Y-m-d H:i:s');
 		$post_status = "draft";
 		$submited_form = $_POST;
@@ -55,13 +55,13 @@ function updatePostInDb(){
 	global $msg;
 	if(isset($_POST['update_post'])){
 		$post_id = $_GET['id'];
-		$post_title = $_POST['post_title'];
-		$post_category_id  = $_POST['post_category_id'];
-		$post_image  = $_FILES['post_image']['name'];
-		$post_image_temp  = $_FILES['post_image']['tmp_name'];
-		$post_tags = $_POST['post_tags'];
-		$post_content = $_POST['post_content'];
-		$post_status = $_POST['post_status'];
+		$post_title = escape($_POST['post_title']);
+		$post_category_id  = escape($_POST['post_category_id']);
+		$post_image  = escape($_FILES['post_image']['name']);
+		$post_image_temp  = escape($_FILES['post_image']['tmp_name']);
+		$post_tags = escape($_POST['post_tags']);
+		$post_content = escape($_POST['post_content']);
+		$post_status = escape($_POST['post_status']);
 		$submited_form = $_POST;
 		$empty_values = 0;
 		foreach( $submited_form  as $key => $value){

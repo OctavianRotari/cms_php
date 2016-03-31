@@ -10,6 +10,11 @@ function readFromDb($table, $queryExtention = NULL){
 	return $result;
 }
 
+function escape($value){
+	global $connection;
+	return mysqli_real_escape_string($connection, $value);
+}
+
 function encryptPassword($user_password){
 	$rand_salt = "thesearemytwentytwocha";
 	$hash_format = "$2y$10$";

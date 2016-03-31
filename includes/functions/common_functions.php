@@ -12,6 +12,11 @@ function readFromDb($table, $queryExtention = NULL){
 	return $result;
 }
 
+function escape($value){
+	global $connection;
+	return mysqli_real_escape_string($connection, $value);
+}
+
 function countRowsInDb($table, $query = NULL){
 	$result = readFromDb($table, $query);
 	$numOfRows = mysqli_num_rows($result);

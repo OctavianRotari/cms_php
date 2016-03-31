@@ -3,13 +3,9 @@
 function signIn(){
 	if(isset($_POST['sign_in'])){
 		global $connection;
-		$user_name = $_POST['user_name'];
-		$user_password = $_POST['user_password'];
-		$user_name = mysqli_real_escape_string($connection, $user_name);
-		$user_password = mysqli_real_escape_string($connection, $user_password);
-
+		$user_name = escape($_POST['user_name']);
+		$user_password = escape($_POST['user_password']);
 		$user_password = encryptPassword($user_password);
-
 		$result = readFromDb('users', " WHERE user_name='{$user_name}' AND user_password='{$user_password}'");
 		$row = mysqli_fetch_assoc($result);
 		if($row['user_name'] == $user_name || $row['user_password'] == $user_password){
@@ -25,23 +21,15 @@ function signIn(){
 function addNewUser(){
 	global $connection;
 	if(isset($_POST['create_account'])){
-		$user_name  = $_POST['user_name'];
-		$user_password  = $_POST['user_password'];
-		$user_firstname = $_POST['user_firstname'];
-		$user_image  = $_FILES['user_image']['name'];
-		$user_image_temp  = $_FILES['user_image']['tmp_name'];
-		$user_secondname  = $_POST['user_secondname'];
-		$user_email = $_POST['user_email'];
+		$user_name  = escape($_POST['user_name']);
+		$user_password  = escape($_POST['user_password']);
+		$user_firstname = escape($_POST['user_firstname']);
+		$user_image  = escape($_FILES['user_image']['name']);
+		$user_image_temp  = escape($_FILES['user_image']['tmp_name']);
+		$user_secondname  = escape($_POST['user_secondname']);
+		$user_email = escape($_POST['user_email']);
 		$user_role = 'user';
-
-		$user_name = mysqli_real_escape_string($connection, $user_name);
-		$user_password = mysqli_real_escape_string($connection, $user_password);
-		$user_firstname = mysqli_real_escape_string($connection, $user_firstname);
-		$user_secondname = mysqli_real_escape_string($connection, $user_secondname);
-		$user_email = mysqli_real_escape_string($connection, $user_email);
-
 		$user_password = encryptPassword($user_password);
-
 		$submited_form = $_POST;
 		$empty_values = 0;
 		foreach( $submited_form  as $key => $value){
