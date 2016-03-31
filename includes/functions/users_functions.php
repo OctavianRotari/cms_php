@@ -8,10 +8,7 @@ function signIn(){
 		$user_name = mysqli_real_escape_string($connection, $user_name);
 		$user_password = mysqli_real_escape_string($connection, $user_password);
 
-		$rand_salt = "thesearemytwentytwocha";
-		$hash_format = "$2y$10$";
-		$hash_and_salt = $hash_format . $rand_salt;
-		$user_password = crypt($user_password, $hash_and_salt);
+		$user_password = encryptPassword($user_password);
 
 		$result = readFromDb('users', " WHERE user_name='{$user_name}' AND user_password='{$user_password}'");
 		$row = mysqli_fetch_assoc($result);
@@ -35,7 +32,7 @@ function addNewUser(){
 		$user_image_temp  = $_FILES['user_image']['tmp_name'];
 		$user_secondname  = $_POST['user_secondname'];
 		$user_email = $_POST['user_email'];
-		$user_role = 'normal_user';
+		$user_role = 'user';
 
 		$user_name = mysqli_real_escape_string($connection, $user_name);
 		$user_password = mysqli_real_escape_string($connection, $user_password);
@@ -43,10 +40,7 @@ function addNewUser(){
 		$user_secondname = mysqli_real_escape_string($connection, $user_secondname);
 		$user_email = mysqli_real_escape_string($connection, $user_email);
 
-		$rand_salt = "thesearemytwentytwocha";
-		$hash_format = "$2y$10$";
-		$hash_and_salt = $hash_format . $rand_salt;
-		$user_password = crypt($user_password, $hash_and_salt);
+		$user_password = encryptPassword($user_password);
 
 		$submited_form = $_POST;
 		$empty_values = 0;

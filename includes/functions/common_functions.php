@@ -12,6 +12,15 @@ function readFromDb($table, $queryExtention = NULL){
 	return $result;
 }
 
+function encryptPassword($user_password){
+	$rand_salt = "thesearemytwentytwocha";
+	$hash_format = "$2y$10$";
+	$hash_and_salt = $hash_format . $rand_salt;
+	$user_password_hashed = crypt($user_password, $hash_and_salt);
+	return $user_password_hashed;
+}
+
+
 function findRowsInDb($tableName, $id, $columnName, $extendQuery = NULL){
 	global $connection;
 	if(isset($_GET[$id])){

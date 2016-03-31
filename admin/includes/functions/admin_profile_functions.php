@@ -14,6 +14,15 @@ function updateProfileInDb(){
 		$user_email = $_POST['user_email'];
 		$submited_form = $_POST;
 		$empty_values = 0;
+
+		$user_name = mysqli_real_escape_string($connection, $user_name);
+		$user_password = mysqli_real_escape_string($connection, $user_password);
+		$user_firstname = mysqli_real_escape_string($connection, $user_firstname);
+		$user_secondname = mysqli_real_escape_string($connection, $user_secondname);
+		$user_email = mysqli_real_escape_string($connection, $user_email);
+
+		$user_password = encryptPassword($user_password);
+
 		foreach( $submited_form  as $key => $value){
 			if(empty($value)){
 				$empty_values += 1;

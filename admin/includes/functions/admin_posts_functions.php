@@ -2,6 +2,7 @@
 
 function addNewPost(){
 	global $connection;
+	global $msg;
 	if(isset($_POST['add_new_post'])){
 		$post_title  = $_POST['post_title'];
 		$post_category_id  = $_POST['post_category_id'];
@@ -79,6 +80,15 @@ function updatePostInDb(){
 	}
 }
 
+function deletePost(){
+	if(isset($_GET['delete_post'])){
+		global $msg;
+		deleteRowFromDb("comments", "delete_post", "comment_post");
+		deleteRowFromDb("posts", "delete_post", "post");
+		$msg->success('Post and related comments have been deleted', 'posts.php');
+	}
+}
+
 function getCategoryTitleUsingCatId($row){
 	$category_id = $row['post_category_id'];
 	$category_query = readFromDb('categories', " WHERE cat_id={$category_id}");
@@ -105,6 +115,9 @@ function displayContentPostsPage(){
 	switch($source){
 		case 'add_post';
 		include "includes/posts_new.php";
+		break;
+		case 'edit_post';
+		include "includes/post_edit.php";
 		break;
 		default:
 		include "includes/posts_table.php";

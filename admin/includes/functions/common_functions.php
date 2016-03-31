@@ -10,6 +10,14 @@ function readFromDb($table, $queryExtention = NULL){
 	return $result;
 }
 
+function encryptPassword($user_password){
+	$rand_salt = "thesearemytwentytwocha";
+	$hash_format = "$2y$10$";
+	$hash_and_salt = $hash_format . $rand_salt;
+	$user_password_hashed = crypt($user_password, $hash_and_salt);
+	return $user_password_hashed;
+}
+
 function countRowsInDb($table, $query = NULL){
 	$result = readFromDb($table, $query);
 	$numOfRows = mysqli_num_rows($result);
@@ -34,7 +42,6 @@ function deleteRowFromDb($tableName, $getValue, $idName){
 		$query = "DELETE FROM {$tableName} ";
 		$query .= "WHERE {$idName}_id={$row_id}";
 		$delete_category = mysqli_query($connection, $query);
-		header("Location: {$tableName}.php");
 		ifQueryFail($delete_category);
 	}
 

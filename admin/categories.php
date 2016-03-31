@@ -56,7 +56,7 @@
 							<tr>
 							<td><?php echo $row["cat_id"];?></td>
 							<td><?php echo $row["cat_title"];?></td>
-							<td><a href='categories.php?delete=<?php echo $row["cat_id"];?>'>Delete</a></td>
+							<td><a onclick="return confirm('Are you sure you want to delete?')" href='categories.php?delete=<?php echo $row["cat_id"];?>'>Delete</a></td>
 							<td><a href='categories.php?update=<?php echo $row["cat_id"];?>'>Update</a></td>
 							<tr>
 							<?php
