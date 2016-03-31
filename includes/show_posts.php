@@ -1,11 +1,11 @@
 <?php include "functions/posts_functions.php"?>
 <?php
 $result = showContentPostsPage();
-$rowCount = $result->num_rows;
+$rowCount = $result['posts']->num_rows;
 if($rowCount === 0 ){
 	echo "<h3 class='text-center'>No results found</h3>";
 }
-while($row = mysqli_fetch_assoc($result)){
+while($row = mysqli_fetch_assoc($result['posts'])){
 	$post_id = $row["post_id"];
 	$post_title = $row["post_title"];
 	$post_author = $row["post_author"];
@@ -25,5 +25,25 @@ while($row = mysqli_fetch_assoc($result)){
 	<a class='btn btn-primary' href='index.php?source=show_post&id=<?php echo $post_id;?>'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>
 	<hr>
 <?php
+}
+$number_of_pages = $result['posts_count']/5;
+for($i = 0; $i < $number_of_pages; $i++){
+	if(array_key_exists('author', $result)){
+	?>
+		<a href="index.php?author=<?php echo $result['author'];?>&page=<?php echo $i?>"><?php echo $i?></a>
+	<?php
+	} else if(array_key_exists('search', $result)){
+	?>
+		<a href="index.php?search=<?php echo $result['search'];?>&page=<?php echo $i?>"><?php echo $i?></a>
+	<?php
+	} else if(array_key_exists('cat_id', $result)){
+	?>
+		<a href="index.php?cat_id=<?php echo $result['cat_id'];?>&page=<?php echo $i?>"><?php echo $i?></a>
+	<?php
+	} else {
+		?>
+			<a href="index.php?page=<?php echo $i?>"><?php echo $i?></a>
+		<?php
+	}
 }
 ?>

@@ -107,16 +107,6 @@ function getCategoryTitleUsingCatId($row){
 	return $category_row;
 }
 
-function countCommentsUsingId($row){
-	$post_id = $row['post_id'];
-	$comments_query = readFromDb('comments', " WHERE comment_post_id={$post_id}");
-	$commentsCount = 0;
-	while($row = mysqli_fetch_assoc($comments_query)){
-		$commentsCount += 1;
-	}
-	return $commentsCount;
-}
-
 function displayContentPostsPage(){
 	if(isset($_GET['source'])){
 		$source = $_GET['source'];

@@ -47,7 +47,7 @@
 				<td><?php echo $row['post_status'];?></td>
 				<td><img src='../images/<?php echo $row['post_image'];?>' width='100px'height='100px'></td>
 				<td><?php echo $row['post_tags'];?></td>
-				<td><?php echo countCommentsUsingId($row);?></td>
+				<td><?php echo countRowsInDb("comments", " WHERE comment_post_id='{$row['post_id']}'");?></td>
 				<td><?php echo $row['post_date'];?></td>
 				<td>
 					<?php echo $row['post_view_count'];?><br><br>

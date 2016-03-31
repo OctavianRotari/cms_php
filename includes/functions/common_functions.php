@@ -12,6 +12,12 @@ function readFromDb($table, $queryExtention = NULL){
 	return $result;
 }
 
+function countRowsInDb($table, $query = NULL){
+	$result = readFromDb($table, $query);
+	$numOfRows = mysqli_num_rows($result);
+	return $numOfRows;
+}
+
 function encryptPassword($user_password){
 	$rand_salt = "thesearemytwentytwocha";
 	$hash_format = "$2y$10$";
