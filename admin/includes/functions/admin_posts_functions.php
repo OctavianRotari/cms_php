@@ -1,5 +1,16 @@
 <?php
 
+function resetPostViewCount($post_id){
+	if(isset($_POST['reset_post_view_count'])){
+		global $connection;
+		$post_id = mysqli_real_escape_string($connection, $post_id);
+		$view_query = "UPDATE posts SET post_view_count = 0 WHERE post_id='{$post_id}'";
+		$send_query = mysqli_query($connection, $view_query);
+		ifQueryFail($send_query);
+		header("Location: posts.php");
+	}
+}
+
 function addNewPost(){
 	global $connection;
 	global $msg;

@@ -1,5 +1,6 @@
 <?php include "functions/posts_functions.php"?>
 <?php
+incrementViewCount();
 $postResult = findRowsInDb('posts', 'id', 'post_id' );
 while($row = mysqli_fetch_assoc($postResult)){
 	$post_title = $row["post_title"];

@@ -14,6 +14,8 @@ if(!$_SESSION['auth']){
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
 	<title>SB Admin - Bootstrap Admin Template</title>
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,6 +29,7 @@ if(!$_SESSION['auth']){
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<link href="css/loader.css" rel="stylesheet">
 </head>
 <?php include "includes/functions/db.php"?>
 <?php include "includes/functions/common_functions.php"?>

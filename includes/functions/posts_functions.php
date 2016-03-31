@@ -7,6 +7,13 @@ function postsSearchByTags($column, $searchedWord){
 		return $result;
 	}
 }
+function incrementViewCount(){
+	global $connection;
+	$post_id = $_GET['id'];
+	$view_query = "UPDATE posts SET post_view_count = post_view_count + 1 WHERE post_id='{$post_id}'";
+	$send_query = mysqli_query($connection, $view_query);
+	ifQueryFail($send_query);
+}
 
 function postsSearchByAuthor($column){
 	if(isset($_GET['author'])){
@@ -24,7 +31,7 @@ function showContentPostsPage(){
 	} else if(isset($_GET['author'])){
 		$result = postsSearchByAuthor('post_author', 'author');
 	} else {
-		$result = readFromDb("posts", " WHERE post_status = 'published'");
+		$result = readFromDb("posts", " WHERE post_status = 'published' LIMIT 5");
 	}
 	return $result;
 }

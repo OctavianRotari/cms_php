@@ -14,9 +14,16 @@
 				</li>
 			</ul>
 		</li>
-		<li>
-			<a href="categories.php"><i class="fa fa-fw fa-bar-chart-o"></i> Categories</a>
-		</li>
+		<?php
+		$user_role = $_SESSION['user_role'];
+		if($user_role === 'admin'){
+			?>
+			<li>
+				<a href="categories.php"><i class="fa fa-fw fa-bar-chart-o"></i> Categories</a>
+			</li>
+			<?php
+		}
+		?>
 		<li>
 			<a href="comments.php"><i class="fa fa-fw fa-table"></i> Comments</a>
 		</li>

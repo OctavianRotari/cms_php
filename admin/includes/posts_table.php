@@ -12,6 +12,7 @@
 				<th>Tags</th>
 				<th>Comments<br>Count</th>
 				<th>Date</th>
+				<th>Viewed</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
@@ -48,6 +49,13 @@
 				<td><?php echo $row['post_tags'];?></td>
 				<td><?php echo countCommentsUsingId($row);?></td>
 				<td><?php echo $row['post_date'];?></td>
+				<td>
+					<?php echo $row['post_view_count'];?><br><br>
+					<?php resetPostViewCount($row['post_id']);?>
+					<form action="posts.php" method="post">
+						<input class='btn btn-primary' type="submit" value="Reset" name="reset_post_view_count">
+					</form>
+				</td>
 				<td><a href='posts.php?source=edit_post&id=<?php echo $row['post_id'];?>'>Edit</a></td>
 				<td><a onclick="return confirm('Are you sure you want to delete?')" href='posts.php?delete_post=<?php echo $row['post_id'];?>'>Delete</a></td>
 				<tr>
