@@ -106,12 +106,6 @@ function displayContentPostsPage(){
 		case 'add_post';
 		include "includes/posts_new.php";
 		break;
-		case 'show_post';
-		include "includes/post_show.php";
-		break;
-		case 'edit_post';
-		include "includes/post_edit.php";
-		break;
 		default:
 		include "includes/posts_table.php";
 		break;

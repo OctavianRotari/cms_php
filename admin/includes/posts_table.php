@@ -13,7 +13,6 @@
 				<th>Comments<br>Count</th>
 				<th>Date</th>
 				<th>Edit</th>
-				<th>Show</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
@@ -31,7 +30,7 @@
 				<tr>
 				<td><?php echo $row['post_id'];?></td>
 				<td><?php echo $row['post_author'];?></td>
-				<td><?php echo $row['post_title'];?></td>
+				<td><a href="../index.php?source=show_post&id=<?php echo $row['post_id'];?>"><?php echo $row['post_title'];?></a></td>
 				<td><?php
 					$category_row = getCategoryTitleUsingCatId($row);
 					echo $category_row['cat_title'];
@@ -42,7 +41,6 @@
 				<td><?php echo countCommentsUsingId($row);?></td>
 				<td><?php echo $row['post_date'];?></td>
 				<td><a href='posts.php?source=edit_post&id=<?php echo $row['post_id'];?>'>Edit</a></td>
-				<td><a href='posts.php?source=show_post&id=<?php echo $row['post_id'];?>'>Show</a></td>
 				<td><a href='posts.php?delete_post=<?php echo $row['post_id'];?>'>Delete</a></td>
 				<tr>
 				<?php

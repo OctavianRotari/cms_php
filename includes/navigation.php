@@ -25,6 +25,9 @@
 					<?php signOut()?>
 					<a href="index.php?signOut=true"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
 				</li>
+				<li>
+					<a href="admin/posts.php"><i class="fa fa-fw fa-power-off"></i> Admin Posts</a>
+				</li>
 				<?php
 			} else {
 				?>
