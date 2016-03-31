@@ -1,6 +1,7 @@
 <?php include "includes/admin_header.php"?>
 <?php include "includes/admin_navigation.php"?>
 <?php include "includes/functions/admin_comments_functions.php"?>
+<?php include "includes/functions/flash_messages.php"?>
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<!-- Page Heading -->

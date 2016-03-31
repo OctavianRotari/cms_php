@@ -1,36 +1,5 @@
 <?php
 
-function updateCommentInDb(){
-	global $connection;
-	if(isset($_POST['update_comment'])){
-		$comment_id = $_GET['id'];
-		$comment_author = $_POST['comment_author'];
-		$comment_email  = $_POST['comment_email'];
-		$comment_content = $_POST['comment_content'];
-		$comment_status = $_POST['comment_status'];
-		$submited_form = $_POST;
-		$empty_values = 0;
-		foreach( $submited_form  as $key => $value){
-			if(empty($value)){
-				$empty_values += 1;
-			}
-		}
-		if ($empty_values === 0 ){
-			$query = "UPDATE comments SET";
-			$query .= " comment_author='{$comment_author}',";
-			$query .= " comment_email='{$comment_email}',";
-			$query .= " comment_content='{$comment_content}',";
-			$query .= " comment_status='{$comment_status}'";
-			$query .= " WHERE comment_id='{$comment_id}'";
-			$updating_comment = mysqli_query($connection, $query);
-			ifQueryFail($updating_comment);
-			header("Location: comments.php");
-		} else {
-			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
-		}
-	}
-}
-
 function changeStatus(){
 	global $connection;
 	$value = NULL;

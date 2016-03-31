@@ -1,5 +1,6 @@
 <?php $row = findRowInDb("posts", "id", "post");?>
 <?php updatePostInDb();?>
+<?php global $msg; $msg->display();?>
 <div class="col-sm-6">
 	<form action="posts.php?source=edit_post&id=<?php echo $_GET['id']?>" method="post" enctype="multipart/form-data">
 		<div class=form-group>
@@ -51,7 +52,7 @@
 		</div>
 		<div class=form-group>
 			<label for="post_content">Content:</label>
-			<textarea class="form-control" type="text" name="post_content" rows="10"><?php echo $row['post_content']?></textarea>
+			<textarea id="mytextarea" class="form-control" type="text" name="post_content" rows="10"><?php echo $row['post_content']?></textarea>
 		</div>
 		<div class=form-group>
 			<input class="btn btn-primary" value="Update Post" type="submit" name="update_post">

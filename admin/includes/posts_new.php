@@ -30,7 +30,7 @@
 		</div>
 		<div class=form-group>
 			<label for="post_content">Content:</label>
-			<textarea class="form-control" type="text" name="post_content" rows="10"></textarea>
+			<textarea id="mytextarea" class="form-control" type="text" name="post_content" rows="10"></textarea>
 		</div>
 		<div class=form-group>
 			<input class="btn btn-primary" value="Add Post" type="submit" name="add_new_post">

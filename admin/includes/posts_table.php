@@ -1,4 +1,5 @@
 <div>
+<?php global $msg; $msg->display();?>
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>

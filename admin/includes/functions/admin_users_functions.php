@@ -2,6 +2,7 @@
 
 function addNewUser(){
 	global $connection;
+	global $msg;
 	if(isset($_POST['add_new_user'])){
 		$user_name  = $_POST['user_name'];
 		$user_password  = $_POST['user_password'];
@@ -28,18 +29,19 @@ function addNewUser(){
 			$query .= "'$user_firstname', '$user_secondname', '$user_email', ";
 			$query .= "'$user_image', '$user_role', '$rand_salt')";
 			$adding_new_user = mysqli_query($connection, $query);
-			header('Location: users.php');
+			$msg->success('User created', 'users.php');
 			if(!$adding_new_user){
 				die("Query fail " . mysqli_error($connection));
 			}
 		} else {
-			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
+			$msg->error('Fill in all the fields', 'users.php');
 		}
 	}
 }
 
 function updateUserInDb(){
 	global $connection;
+	global $msg;
 	if(isset($_POST['edit_user'])){
 		$user_id = $_GET['id'];
 		$user_name  = $_POST['user_name'];
@@ -71,12 +73,12 @@ function updateUserInDb(){
 			$query .= "user_role='{$user_role}' ";
 			$query .= "WHERE user_id='{$user_id}'";
 			$updateUser = mysqli_query($connection, $query);
-			header('Location: users.php');
+			$msg->success('User updated', 'users.php');
 			if(!$updateUser){
 				die("Query fail " . mysqli_error($connection));
 			}
 		} else {
-			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
+			$msg->error('Fill in all the fields', 'users.php');
 		}
 	}
 }

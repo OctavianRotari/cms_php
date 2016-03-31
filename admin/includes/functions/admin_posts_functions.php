@@ -30,15 +30,17 @@ function addNewPost(){
 			$query .= "'$post_content', '$post_tags', '$post_comment_count', '$post_status')";
 			$adding_new_post = mysqli_query($connection, $query);
 			ifQueryFail($adding_new_post);
-			header("Location: posts.php");
+			$msg->success('Post added', 'posts.php');
+			//header("Location: posts.php");
 		} else {
-			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
+			$msg->error('Fill in all the fields');
 		}
 	}
 }
 
 function updatePostInDb(){
 	global $connection;
+	global $msg;
 	if(isset($_POST['update_post'])){
 		$post_id = $_GET['id'];
 		$post_title = $_POST['post_title'];
@@ -69,9 +71,10 @@ function updatePostInDb(){
 			$query .= " WHERE post_id='{$post_id}'";
 			$updating_post = mysqli_query($connection, $query);
 			ifQueryFail($updating_post);
-			header("Location: posts.php");
+			$msg->success('Post updated', 'posts.php');
+			//header("Location: posts.php");
 		} else {
-			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
+			$msg->error('Fill in all the fields');
 		}
 	}
 }

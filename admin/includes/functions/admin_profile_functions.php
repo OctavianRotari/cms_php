@@ -2,6 +2,7 @@
 
 function updateProfileInDb(){
 	global $connection;
+	global $msg;
 	if(isset($_POST['edit_profile'])){
 		$user_id = $_SESSION['user_id'];
 		$user_name  = $_POST['user_name'];
@@ -31,12 +32,12 @@ function updateProfileInDb(){
 			$query .= "user_email='{$user_email}' ";
 			$query .= " WHERE user_id='{$user_id}'";
 			$updateUser = mysqli_query($connection, $query);
-			header('Location: profile.php');
+			$msg->success('Profile updated', 'profile.php');
 			if(!$updateUser){
 				die("Query fail " . mysqli_error($connection));
 			}
 		} else {
-			echo "<h3 style='color:red'>Fill in  all the fields</h3><br>";
+			$msg->error('Fill in all the fields', 'profile.php');
 		}
 	}
 }

@@ -2,6 +2,7 @@
 $user_role = $_SESSION['user_role'];
 if($user_role === 'admin'){
 ?>
+<?php global $msg; $msg->display();?>
 <div>
 	<table class="table table-bordered table-hover">
 		<thead>
@@ -14,6 +15,7 @@ if($user_role === 'admin'){
 				<th>Image</th>
 				<th>Role</th>
 				<th>Delete</th>
+				<th>Edit</th>
 			</tr>
 		</thead>
 		<tbody>
