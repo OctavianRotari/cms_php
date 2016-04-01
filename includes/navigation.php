@@ -9,7 +9,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="posts.php">CMS Front</a>
+			<a class="navbar-brand" href="posts.php?page=1">CMS Front</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="navbar-header navbar-right collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -19,6 +19,9 @@
 					?>
 					<li>
 						<a href="admin/posts.php"><i class="fa fa-fw fa-power-off"></i> Written Posts</a>
+					</li>
+					<li>
+						<a href="admin/posts.php?source=add_post"><i class="fa fa-fw fa-power-off"></i> Write New Post</a>
 					</li>
 					<li>
 						<a href="admin/profile.php"><i class="fa fa-fw fa-power-off"></i> Profile</a>
