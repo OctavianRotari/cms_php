@@ -1,8 +1,4 @@
 <?php include "includes/admin_header.php"?>
-<?php
-$user_role = $_SESSION['user_role'];
-if($user_role === 'admin'){
-	?>
 	<?php include "includes/admin_navigation.php"?>
 	<?php include "includes/functions/admin_categories_functions.php"?>
 	<?php include "includes/functions/flash_messages.php"?>
@@ -62,7 +58,14 @@ if($user_role === 'admin'){
 								<tr>
 								<td><?php echo $row["cat_id"];?></td>
 								<td><?php echo $row["cat_title"];?></td>
+								<?php
+								$user_role = $_SESSION['user_role'];
+								if($user_role === 'admin'){
+									?>
 								<td><a onclick="return confirm('Are you sure you want to delete?')" href='categories.php?delete=<?php echo $row["cat_id"];?>'>Delete</a></td>
+								<?php
+								}
+								?>
 								<td><a href='categories.php?update=<?php echo $row["cat_id"];?>'>Update</a></td>
 								<tr>
 								<?php
@@ -79,9 +82,4 @@ if($user_role === 'admin'){
 		</div>
 		<!-- /#page-wrapper -->
 	</div>
-<?php
-} else {
-	header("Location: index.php");
-}
-?>
 <?php include "includes/admin_footer.php"?>

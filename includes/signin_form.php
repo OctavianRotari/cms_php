@@ -1,5 +1,6 @@
 <div class="well">
 	<?php signIn();?>
+	<?php global $msg; $msg->display();?>
 	<form action="index.php" method="post">
 		<div class="form-group">
 			<label for="user_name">Put your Username:</label><br>

@@ -19,8 +19,8 @@
 		</thead>
 		<tbody>
 			<?php
-			$current_user = $_SESSION['user_name'];
-			$result = readFromdb("posts", " WHERE post_author='{$current_user}'");
+			$current_user_id = $_SESSION['user_id'];
+			$result = readFromdb("posts", " WHERE post_user_id='{$current_user_id}'");
 			while( $row = mysqli_fetch_assoc($result)){
 				?>
 				<tr>
@@ -65,4 +65,3 @@
 		</tbody>
 	</table>
 </div>
-

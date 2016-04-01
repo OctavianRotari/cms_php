@@ -17,6 +17,7 @@ function addNewPost(){
 	if(isset($_POST['add_new_post'])){
 		$post_title  = escape($_POST['post_title']);
 		$post_category_id  = escape($_POST['post_category_id']);
+		$post_user_id  = escape($_SESSION['user_id']);
 		$post_author = escape($_SESSION['user_name']);
 		$post_image  = escape($_FILES['post_image']['name']);
 		$post_image_temp  = escape($_FILES['post_image']['tmp_name']);
@@ -29,15 +30,14 @@ function addNewPost(){
 		if ($empty_values === 0 ){
 			move_uploaded_file($post_image_temp, "../images/$post_image");
 			$query ="INSERT INTO posts(post_title, ";
-			$query .= "post_category_id, post_author, post_date, post_image, ";
+			$query .= "post_category_id, post_user_id, post_author, post_date, post_image, ";
 			$query .= "post_content, post_tags, post_comment_count, post_status)";
-			$query .= " VALUE('$post_title', '$post_category_id', ";
+			$query .= " VALUE('$post_title', '$post_category_id', '$post_user_id', ";
 			$query .= "'$post_author', now(), '$post_image', ";
 			$query .= "'$post_content', '$post_tags', '$post_comment_count', '$post_status')";
 			$adding_new_post = mysqli_query($connection, $query);
 			ifQueryFail($adding_new_post);
 			$msg->success('Post added', 'posts.php');
-			//header("Location: posts.php");
 		} else {
 			$msg->error('Fill in all the fields');
 		}

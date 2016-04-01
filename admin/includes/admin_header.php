@@ -15,7 +15,6 @@ if(!$_SESSION['auth']){
 	<meta name="author" content="">
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
 	<title>SB Admin - Bootstrap Admin Template</title>
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">

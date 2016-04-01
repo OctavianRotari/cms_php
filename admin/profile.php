@@ -29,10 +29,6 @@
 							<input type="file" value="<?php echo $row['user_image'];?>" name="user_image">
 						</div>
 						<div class="form-group">
-							<label for="user_password">Password:</label><br>
-							<input class="form-control" value="<?php echo $row['user_password'];?>" type="password" name="user_password">
-						</div>
-						<div class="form-group">
 							<label for="user_firstname">Firstname:</label><br>
 							<input class="form-control" value="<?php echo $row['user_firstname'];?>" type="text" name="user_firstname">
 						</div>

@@ -23,6 +23,17 @@ function countRowsInDb($table, $query = NULL){
 	return $numOfRows;
 }
 
+function checkIfFieldEmpty(){
+	$submited_form = $_POST;
+	$empty_values = 0;
+	foreach( $submited_form  as $key => $value){
+		if(empty($value)){
+			$empty_values += 1;
+		}
+	}
+	return $empty_values;
+}
+
 function encryptPassword($user_password){
 	$rand_salt = "thesearemytwentytwocha";
 	$hash_format = "$2y$10$";

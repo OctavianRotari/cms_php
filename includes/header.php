@@ -34,3 +34,4 @@ session_start();
 <?php include "includes/functions/db.php"?>
 <?php include "includes/functions/common_functions.php"?>
 <?php include "includes/functions/users_functions.php";?>
+<?php include "includes/functions/flash_messages.php"?>

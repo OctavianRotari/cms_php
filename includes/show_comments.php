@@ -7,7 +7,7 @@ $post_id = $_GET['id'];
 <?php addCommentToDb();?>
 <div class="well">
 	<h4>Leave a Comment:</h4>
-	<form action="index.php?source=show_post&id=<?php echo $post_id;?>" method="post">
+	<form action="posts.php?source=show_post&id=<?php echo $post_id;?>" method="post">
 		<div class="form-group">
 			<label for="comment_author">Put your name:</label><br>
 			<input class="form-control" type="text" name="comment_author" >

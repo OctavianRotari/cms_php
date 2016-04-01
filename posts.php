@@ -1,5 +1,4 @@
 <?php include "includes/header.php"?>
-
 <body>
 	<!-- Navigation -->
 	<?php include "includes/navigation.php"?>
@@ -8,10 +7,7 @@
 		<div class="row">
 			<!-- Blog Entries Column -->
 			<div class="col-md-8">
-				<h1 class="page-header">
-					Page Heading
-					<small>Secondary Text</small>
-				</h1>
+				<?php global $msg; $msg->display();?>
 				<!-- First Blog Post -->
 				<?php displayContentOfPage();?>
 			</div>
