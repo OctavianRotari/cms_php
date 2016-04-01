@@ -15,7 +15,7 @@ while($row = mysqli_fetch_assoc($result['posts'])){
 	?>
 	<h2><a href='index.php?source=show_post&id=<?php echo $post_id;?>'><?php echo $post_title;?></a></h2>
 	<p class='lead'>
-	by <a href='index.php?author=<?php echo $post_author;?>'><?php echo $post_author;?></a>
+	by <a href='index.php?page=1&author=<?php echo $post_author;?>'><?php echo $post_author;?></a>
 	</p>
 	<p><span class='glyphicon glyphicon-time'></span> Posted on <?php echo $post_date;?></p>
 	<hr>
@@ -27,27 +27,4 @@ while($row = mysqli_fetch_assoc($result['posts'])){
 <?php
 }
 ?>
-<ul class='pager'>
-<?php
-$number_of_pages = ceil($result['posts_count']/5);
-for($i = 1; $i <= $number_of_pages; $i++){
-	if(array_key_exists('author', $result)){
-	?>
-		<li><a href="index.php?page=<?php echo $i?>&author=<?php echo $result['author'];?>"><?php echo $i?></a></li>
-	<?php
-	} else if(array_key_exists('search', $result)){
-	?>
-		<li><a href="index.php?page=<?php echo $i?>&search=<?php echo $result['search'];?>"><?php echo $i?></a></li>
-	<?php
-	} else if(array_key_exists('cat_id', $result)){
-	?>
-		<li><a href="index.php?page=<?php echo $i?>&cat_id=<?php echo $result['cat_id'];?>"><?php echo $i?></a></li>
-	<?php
-	} else {
-		?>
-			<li><a href="index.php?page=<?php echo $i?>"><?php echo $i?></a>
-		<?php
-	}
-}
-?>
-</ul>
+<?php include "includes/show_num_page.php"?>
