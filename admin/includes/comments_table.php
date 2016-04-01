@@ -33,7 +33,7 @@
 					<td><?php echo $row['comment_content'];?></td>
 					<td><?php echo $row['comment_email'];?></td>
 					<td>
-						<a href="../index.php?source=show_post&id=<?php echo $post_id;?>">
+						<a href="../posts.php?source=show_post&id=<?php echo $post_id;?>">
 							<?php echo $post_title;?>
 						</a>
 					</td>

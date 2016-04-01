@@ -31,7 +31,7 @@
 				<?php
 				if($row['post_status'] === 'published'){
 					?>
-					<a href="../index.php?source=show_post&id=<?php echo $row['post_id'];?>"><?php echo $row['post_title'];?></a>
+					<a href="../posts.php?source=show_post&id=<?php echo $row['post_id'];?>"><?php echo $row['post_title'];?></a>
 					<?php
 				} else {
 					?>

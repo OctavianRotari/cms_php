@@ -13,16 +13,16 @@ while($row = mysqli_fetch_assoc($result['posts'])){
 	$post_image = $row['post_image'];
 	$post_content = $row['post_content'];
 	?>
-	<h2><a href='index.php?source=show_post&id=<?php echo $post_id;?>'><?php echo $post_title;?></a></h2>
+	<h2><a href='posts.php?source=show_post&id=<?php echo $post_id;?>'><?php echo $post_title;?></a></h2>
 	<p class='lead'>
-	by <a href='index.php?page=1&author=<?php echo $post_author;?>'><?php echo $post_author;?></a>
+	by <a href='posts.php?page=1&author=<?php echo $post_author;?>'><?php echo $post_author;?></a>
 	</p>
 	<p><span class='glyphicon glyphicon-time'></span> Posted on <?php echo $post_date;?></p>
 	<hr>
 	<img class='img-responsive' src='images/<?php echo $post_image;?>' alt='' height='300px' width='300px'>
 	<hr>
 	<p maxlength='10'><?php echo limitParagraphLength($post_content);?></p>
-	<a class='btn btn-primary' href='index.php?source=show_post&id=<?php echo $post_id;?>'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>
+	<a class='btn btn-primary' href='posts.php?source=show_post&id=<?php echo $post_id;?>'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a>
 	<hr>
 <?php
 }
