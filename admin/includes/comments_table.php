@@ -12,7 +12,6 @@
 				<th>Date</th>
 				<th>Approve</th>
 				<th>Unapprove</th>
-				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
@@ -52,7 +51,6 @@
 						</form>
 					</td>
 					<?php changeStatus();?>
-					<td><a href='comments.php?source=edit_comment&id=<?php echo $row['comment_id'];?>'>Edit</a></td>
 					<td><a onclick="return confirm('Are you sure you want to delete?')" href='comments.php?delete_comment=<?php echo $row['comment_id'];?>'>Delete</a></td>
 					<tr>
 					<?php

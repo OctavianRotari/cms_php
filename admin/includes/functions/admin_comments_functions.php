@@ -36,9 +36,6 @@ function displayContentCommentsPage(){
 		case 'add_comment';
 		include "includes/comment_new.php";
 		break;
-		case 'edit_comment';
-		include "includes/comment_edit.php";
-		break;
 		default:
 		include "includes/comments_table.php";
 		break;
