@@ -19,7 +19,6 @@
 		</thead>
 		<tbody>
 			<?php
-			deletePost();
 			$current_user = $_SESSION['user_name'];
 			$result = readFromdb("posts", " WHERE post_author='{$current_user}'");
 			while( $row = mysqli_fetch_assoc($result)){
@@ -57,6 +56,7 @@
 					</form>
 				</td>
 				<td><a href='posts.php?source=edit_post&id=<?php echo $row['post_id'];?>'>Edit</a></td>
+				<?php deletePost($row['post_image']);?>
 				<td><a onclick="return confirm('Are you sure you want to delete?')" href='posts.php?delete_post=<?php echo $row['post_id'];?>'>Delete</a></td>
 				<tr>
 				<?php

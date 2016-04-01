@@ -79,11 +79,12 @@ function updatePostInDb(){
 	}
 }
 
-function deletePost(){
+function deletePost($image_name){
 	if(isset($_GET['delete_post'])){
 		global $msg;
 		deleteRowFromDb("comments", "delete_post", "comment_post");
 		deleteRowFromDb("posts", "delete_post", "post");
+		unlink("../images/" . $image_name);
 		$msg->success('Post and related comments have been deleted', 'posts.php');
 	}
 }
