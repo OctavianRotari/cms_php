@@ -23,6 +23,17 @@ function encryptPassword($user_password){
 	return $user_password_hashed;
 }
 
+function checkIfFieldEmpty($post){
+	$submited_form = $post;
+	$empty_values = 0;
+	foreach( $submited_form  as $key => $value){
+		if(empty($value)){
+			$empty_values += 1;
+		}
+	}
+	return $empty_values;
+}
+
 function countRowsInDb($table, $query = NULL){
 	$result = readFromDb($table, $query);
 	$numOfRows = mysqli_num_rows($result);

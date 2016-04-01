@@ -9,6 +9,7 @@ if(!isset($_SESSION['auth'])){
 		<h4>Blog Search</h4>
 		<form action="index.php" method="get">
 			<div class="input-group">
+				<input name="page" type="hidden" value="1">
 				<input name="search" type="text" class="form-control">
 				<span class="input-group-btn">
 					<button class="btn btn-default" type="submit">

@@ -17,7 +17,7 @@ function postsSearch($queryExtention){
 function checkIfIndexPage($query){
 	if(isset($_GET['page'])){
 		$number_of_page = $_GET['page'];
-		$rows_offset = $number_of_page * 5;
+		$rows_offset = ($number_of_page - 1) * 5;
 		$query = $query . " OFFSET {$rows_offset}";
 	}
 	return $query;

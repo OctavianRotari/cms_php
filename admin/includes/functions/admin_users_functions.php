@@ -12,15 +12,8 @@ function addNewUser(){
 		$user_secondname  = escape($_POST['user_secondname']);
 		$user_email = escape($_POST['user_email']);
 		$user_role = escape($_POST['user_role']);
-		$submited_form = $_POST;
-		$empty_values = 0;
 		$user_password = encryptPassword($user_password);
-
-		foreach( $submited_form  as $key => $value){
-			if(empty($value)){
-				$empty_values += 1;
-			}
-		}
+		$empty_values = checkIfFieldEmpty($_POST);
 		if ($empty_values === 0 ){
 			move_uploaded_file($user_image_temp, "../images/$user_image");
 			$query ="INSERT INTO users(user_name, ";
@@ -54,14 +47,7 @@ function updateUserInDb(){
 		$user_email = escape($_POST['user_email']);
 		$user_role = escape($_POST['user_role']);
 		$user_password = encryptPassword($user_password);
-
-		$submited_form = $_POST;
-		$empty_values = 0;
-		foreach( $submited_form  as $key => $value){
-			if(empty($value)){
-				$empty_values += 1;
-			}
-		}
+		$empty_values = checkIfFieldEmpty($_POST);
 		if ($empty_values === 0 ){
 			move_uploaded_file($user_image_temp, "../images/$user_image");
 			$query ="UPDATE users SET ";

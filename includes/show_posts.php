@@ -30,7 +30,7 @@ while($row = mysqli_fetch_assoc($result['posts'])){
 <ul class='pager'>
 <?php
 $number_of_pages = ceil($result['posts_count']/5);
-for($i = 0; $i < $number_of_pages; $i++){
+for($i = 1; $i <= $number_of_pages; $i++){
 	if(array_key_exists('author', $result)){
 	?>
 		<li><a href="index.php?page=<?php echo $i?>&author=<?php echo $result['author'];?>"><?php echo $i?></a></li>

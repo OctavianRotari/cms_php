@@ -1,8 +1,8 @@
+<?php include "includes/admin_header.php"?>
 <?php
 $user_role = $_SESSION['user_role'];
 if($user_role === 'admin'){
 	?>
-	<?php include "includes/admin_header.php"?>
 	<?php include "includes/admin_navigation.php"?>
 	<?php include "includes/functions/admin_users_functions.php"?>
 	<?php include "includes/functions/flash_messages.php"?>

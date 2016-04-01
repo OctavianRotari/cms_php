@@ -1,10 +1,12 @@
+<?php include "includes/admin_header.php"?>
 <?php
 $user_role = $_SESSION['user_role'];
 if($user_role === 'admin'){
 	?>
-	<?php include "includes/admin_header.php"?>
 	<?php include "includes/admin_navigation.php"?>
 	<?php include "includes/functions/admin_categories_functions.php"?>
+	<?php include "includes/functions/flash_messages.php"?>
+		<?php global $msg; $msg->display();?>
 		<div id="page-wrapper">
 			<div class="container-fluid">
 				<!-- Page Heading -->
@@ -77,9 +79,9 @@ if($user_role === 'admin'){
 		</div>
 		<!-- /#page-wrapper -->
 	</div>
-<?php include "includes/admin_footer.php"?>
 <?php
 } else {
 	header("Location: index.php");
 }
 ?>
+<?php include "includes/admin_footer.php"?>

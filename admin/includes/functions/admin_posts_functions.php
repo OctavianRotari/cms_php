@@ -25,13 +25,7 @@ function addNewPost(){
 		$post_content = escape($_POST['post_content']);
 		$post_date = date('Y-m-d H:i:s');
 		$post_status = "draft";
-		$submited_form = $_POST;
-		$empty_values = 0;
-		foreach( $submited_form  as $key => $value){
-			if(empty($value)){
-				$empty_values += 1;
-			}
-		}
+		$empty_values = checkIfFieldEmpty($_POST);
 		if ($empty_values === 0 ){
 			move_uploaded_file($post_image_temp, "../images/$post_image");
 			$query ="INSERT INTO posts(post_title, ";
@@ -62,13 +56,7 @@ function updatePostInDb(){
 		$post_tags = escape($_POST['post_tags']);
 		$post_content = escape($_POST['post_content']);
 		$post_status = escape($_POST['post_status']);
-		$submited_form = $_POST;
-		$empty_values = 0;
-		foreach( $submited_form  as $key => $value){
-			if(empty($value)){
-				$empty_values += 1;
-			}
-		}
+		$empty_values = checkIfFieldEmpty($_POST);
 		if ($empty_values === 0 ){
 			move_uploaded_file($post_image_temp, "../images/$post_image");
 			$query = "UPDATE posts SET";
