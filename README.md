@@ -1,4 +1,4 @@
-### cms_php
+# cms_php
 
 ## Approach
 
@@ -17,6 +17,6 @@ In this application I decided to make a difference between the type of users whi
 
 A user can also search post by tags, by categories and by authors
 
-# I published this Web App on a server that I had. The primary use of that server is form the website that I've made for Autotrasporti Srl which is the company of my parents. The web site was also made by me while doing this project.
+### I published this Web App on a server that I had. The primary use of that server is form the website that I've made for Autotrasporti Srl which is the company of my parents. The web site was also made by me while doing this project.
 
 http://www.autotrasportirotari.it/cms_php_project/posts.php?page=1
