@@ -1,5 +1,7 @@
 # cms_php
 
+![screenshot](http://i.imgur.com/HLntfGq.png)
+
 ## Approach
 
 This was a new territory for me because I never wrote a PHP app before. I decided to write this CMS system because when I was in London I started to write a blog ( haven't posted many posts but I'm working on that ), so I decided to write my personal CMS system for managing my posts. 
@@ -23,6 +25,6 @@ http://www.autotrasportirotari.it/cms_php_project/posts.php?page=1
 
 
 ##ScreenShot
-![screenshot](http://imgur.com/HLntfGq)
-![screenshot](http://imgur.com/OseonfF)
+
+![screenshot](http://i.imgur.com/OseonfF.png)
 ![screenshot](http://i.imgur.com/pNhx9oG.png)
