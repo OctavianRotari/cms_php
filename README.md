@@ -25,4 +25,4 @@ http://www.autotrasportirotari.it/cms_php_project/posts.php?page=1
 ##ScreenShot
 ![screenshot](http://imgur.com/HLntfGq)
 ![screenshot](http://imgur.com/OseonfF)
-![screenshot](http://imgur.com/pNhx9oG)
+![screenshot](http://i.imgur.com/pNhx9oG.png)
