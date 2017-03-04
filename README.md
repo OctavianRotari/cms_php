@@ -1,28 +1,32 @@
-# cms_php
+#CMS PHP
 
-![screenshot](http://i.imgur.com/HLntfGq.png)
+## Description
 
-## Approach
+My final assessment in the php course was to build a fully functioning CMS
+(content management system).  This project was constructed of two parts, a blog
+part which was accessible to all online users as a platform to access published
+blog posts and an admin part, whereby registered users could upload and modify
+blog posts with categories and contents.
 
-This was a new territory for me because I never wrote a PHP app before. I decided to write this CMS system because when I was in London I started to write a blog ( haven't posted many posts but I'm working on that ), so I decided to write my personal CMS system for managing my posts. 
+## Aproach
 
-I saw this as a perfect opportunity to learn something new and different from what I learnt since now so I decided to try PHP, Apache, MySQL and Bootstrap.
+I took a relatively unorthodox approach here, by not using a framework.  The
+logic behind this was that frameworks are best used in scenarios whereby the
+developer is well acquainted with the language, however, considering i was an
+absolute amateur at this point, the use of a framework wouldn’t have been so
+beneficial.  This made progress difficult at first but armed with the course’s
+resources, the end goal was not so far out of reach.
 
-At the beginning it was difficult to get used to this new technology and I had to set up my machine. I had to choose between using XAMP or set up every single component for the project, I opted for the second option. 
-It required me more time before actually start to code but this gave me an overview on how all the components work together.
+## Conclusions
 
-I haven't used any framework because I think that these will give me a better understanding of PHP as a whole.
-
-I started this project by using a bootstrap template and then I deleted everything that wasn't needed and started to work form the home pages  back to the admin pages.
-
-In this application I decided to make a difference between the type of users which can be normal users or admin user in this way the admin has a general overview of all the users that are using the application and about all the posts that are present. Also I decided that every one can make a comment to the posts but these comments need to be approved before being published and this task is performed by the user who wrote the post. 
-
-A user can also search post by tags, by categories and by authors
-
-I published this Web App on a server that I had. The primary use of that server is form the website that I've made for Autotrasporti Srl which is the company of my parents. The web site was also made by me while doing this project.
-
-http://www.autotrasportirotari.it/cms_php_project/posts.php?page=1
-
+I personally found that PHP was a nice, clear and simple language to use, with
+my Rudy background.  However, in general i prefer the functionality of Ruby, it
+allows for more detailed and regular testing in the developmental stages.
+Which without, medium/large projects would be sub-quality. A lesson learnt
+was the difficulties that can be presented and the changes to tactics that must
+be made when opting to tackle a project without a framework due to an
+inexperience in the coding language. However, now a confident user of PHP,
+future projects will have frameworks in their development.
 
 ##ScreenShot
 
