@@ -17,10 +17,10 @@ function addNewUser(){
     if ($empty_values === 0 ){
       move_uploaded_file($user_image_temp, "../images/$user_image");
       $query ="INSERT INTO users(user_name, ";
-      $query .= "user_password, user_firstname, user_secondname, user_email, ";
+      $query .= "user_password, user_firstname, user_lastname, user_email, ";
       $query .= "user_image, user_role)";
       $query .= " VALUE('$user_name', '$user_password', ";
-      $query .= "'$user_firstname', '$user_secondname', '$user_email', ";
+      $query .= "'$user_firstname', '$user_lastname', '$user_email', ";
       $query .= "'$user_image', '$user_role')";
       $adding_new_user = mysqli_query($connection, $query);
       $msg->success('User created', 'users.php');

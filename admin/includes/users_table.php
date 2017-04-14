@@ -10,7 +10,7 @@ if($user_role === 'admin'){
         <th>User Id</th>
         <th>Username</th>
         <th>Firstname</th>
-        <th>Secondname</th>
+        <th>Lastname</th>
         <th>Email</th>
         <th>Image</th>
         <th>Role</th>
